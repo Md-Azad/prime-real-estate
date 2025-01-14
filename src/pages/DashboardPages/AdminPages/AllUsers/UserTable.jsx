@@ -1,6 +1,43 @@
+import { useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
-const UserTable = ({ user }) => {
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+
+const UserTable = ({ user, refetch }) => {
   const { name, email, role } = user;
+  const [dis, setDisabled] = useState(false);
+
+  const axiosSecure = useAxiosSecure();
+
+  const handleMakeAdmin = (user) => {
+    if (user.role === "admin") {
+      setDisabled(true);
+      Swal.fire({
+        icon: "error",
+        title: `Oops... ${name} is already an Admin`,
+      });
+    } else {
+      const role = "admin";
+      axiosSecure
+        .patch(`/users/${email}`, { role })
+        .then((res) => {
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${name} is an Admin now!`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  };
+
   return (
     <tbody>
       {}
@@ -14,7 +51,13 @@ const UserTable = ({ user }) => {
         </td>
         <td>{email}</td>
         <td>
-          <button className="btn bg-purple-600 text-white">Make Admin</button>
+          <button
+            onClick={() => handleMakeAdmin(user)}
+            disabled={dis}
+            className="btn bg-purple-600 text-white"
+          >
+            Make Admin
+          </button>
         </td>
         <td>
           <button className="btn bg-blue-600 text-white">Make Agent</button>
