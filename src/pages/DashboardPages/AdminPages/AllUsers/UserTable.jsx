@@ -6,27 +6,60 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 const UserTable = ({ user, refetch }) => {
   const { name, email, role } = user;
   const [dis, setDisabled] = useState(false);
+  const [disAgent, setDisAgent] = useState(false);
 
   const axiosSecure = useAxiosSecure();
 
   const handleMakeAdmin = (user) => {
     if (user.role === "admin") {
       setDisabled(true);
+
       Swal.fire({
         icon: "error",
         title: `Oops... ${name} is already an Admin`,
       });
     } else {
-      const role = "admin";
+      const updatedRole = "admin";
       axiosSecure
-        .patch(`/users/${email}`, { role })
+        .patch(`/users/${email}`, { role: updatedRole })
         .then((res) => {
           if (res.data.modifiedCount > 0) {
             refetch();
+            setDisAgent(false);
             Swal.fire({
               position: "top-end",
               icon: "success",
               title: `${name} is an Admin now!`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  };
+  const handleMakeAgent = (user) => {
+    if (user.role === "agent") {
+      setDisAgent(true);
+
+      Swal.fire({
+        icon: "error",
+        title: `Oops... ${name} is already an ${role}`,
+      });
+    } else {
+      const updatedRole = "agent";
+      axiosSecure
+        .patch(`/users/${email}`, { role: updatedRole })
+        .then((res) => {
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            setDisabled(false);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${name} is an ${updatedRole} now!`,
               showConfirmButton: false,
               timer: 1500,
             });
@@ -60,7 +93,13 @@ const UserTable = ({ user, refetch }) => {
           </button>
         </td>
         <td>
-          <button className="btn bg-blue-600 text-white">Make Agent</button>
+          <button
+            onClick={() => handleMakeAgent(user)}
+            disabled={disAgent}
+            className="btn bg-blue-600 text-white"
+          >
+            Make Agent
+          </button>
         </td>
         <td>
           <button className="btn bg-yellow-400 text-white">Is Fraud</button>
