@@ -1,9 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,7 +18,23 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         if (user?.email) {
-          navigate("/");
+          const userInfo = {
+            name,
+            email: user.email,
+            role: "admin",
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Account created Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
         }
       })
       .catch((err) => {
