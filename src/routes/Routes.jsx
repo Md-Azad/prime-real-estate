@@ -10,6 +10,12 @@ import DashboardHome from "../pages/DashboardPages/DashboardHome/DashboardHome";
 import MyProfile from "../pages/DashboardPages/UserPages/MyProfile/MyProfile";
 import WishList from "../pages/DashboardPages/UserPages/WishList/WishList";
 import AllUsers from "../pages/DashboardPages/AdminPages/AllUsers/AllUsers";
+import ManageProperties from "../pages/DashboardPages/AdminPages/ManageProperties/ManageProperties";
+import ManageReviews from "../pages/DashboardPages/AdminPages/ManageReviews/ManageReviews";
+import AgentHome from "../pages/DashboardPages/AgentPages/AgentHome/AgentHome";
+import AddProperties from "../pages/DashboardPages/AgentPages/AddProperties/AddProperties";
+import AdminHome from "../pages/DashboardPages/AdminPages/AdminHome/AdminHome";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -54,7 +60,38 @@ export const router = createBrowserRouter([
       //   Admin dashboard routes
       {
         path: "/dashboard/users",
-        element: <AllUsers></AllUsers>,
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manageproperties",
+        element: (
+          <AdminRoute>
+            <ManageProperties></ManageProperties>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/managereview",
+        element: (
+          <AdminRoute>
+            <ManageReviews></ManageReviews>
+          </AdminRoute>
+        ),
+      },
+
+      //   agent Dashboard routes
+
+      {
+        path: "/dashboard/agenthome",
+        element: <AgentHome></AgentHome>,
+      },
+      {
+        path: "/dashboard/addproperties",
+        element: <AddProperties></AddProperties>,
       },
 
       //   users dashboard routes.

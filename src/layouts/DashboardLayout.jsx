@@ -36,16 +36,40 @@ const DashboardLayout = () => {
                     Manage Users
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/manageproperties"
+                    className="flex items-center gap-2 text-2xl"
+                  >
+                    Manage Properties
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/managereview"
+                    className="flex items-center gap-2 text-2xl"
+                  >
+                    Manage Reviews
+                  </NavLink>
+                </li>
               </>
             )}
             {role === "agent" && (
               <>
                 <li>
                   <NavLink
-                    to="/dashboard/userHome"
+                    to="/dashboard/agenthome"
                     className="flex items-center gap-2 text-2xl"
                   >
                     Agent Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/addproperties"
+                    className="flex items-center gap-2 text-2xl"
+                  >
+                    Add Properties
                   </NavLink>
                 </li>
               </>
@@ -75,19 +99,6 @@ const DashboardLayout = () => {
             <li>
               <NavLink to="/" className="flex items-center gap-2 text-2xl">
                 Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/menu" className="flex items-center gap-2 text-2xl">
-                Menu
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Order/salad"
-                className="flex items-center gap-2 text-2xl"
-              >
-                Order
               </NavLink>
             </li>
           </ul>
