@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser } = useAuth();
   const navigate = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();

@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/icon.png";
 
+import useAuth from "../../hooks/useAuth";
+
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
   const navLinks = (
     <>
       <li>
@@ -16,6 +20,14 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => {
+        alert("something went worng on signout.", err.message);
+      });
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -52,9 +64,18 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="btn bg-yellow-600 text-white">Login</button>
-        </Link>
+        {user?.email ? (
+          <button
+            onClick={handleLogout}
+            className="btn bg-purple-700 hover:bg-purple-500 text-white"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn bg-yellow-600 text-white">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );
