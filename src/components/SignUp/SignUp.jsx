@@ -21,7 +21,7 @@ const SignUp = () => {
           const userInfo = {
             name,
             email: user.email,
-            role: "admin",
+            role: "user",
           };
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
@@ -45,7 +45,7 @@ const SignUp = () => {
     <div className="hero bg-base-200 min-h-screen ">
       <div className="hero-content flex-col w-3/5  ">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Sign Up now!</h1>
+          <h1 className="text-5xl font-bold">Sign Up As User!</h1>
         </div>
         <div className="card bg-base-100 w-full shadow-2xl ">
           <form onSubmit={handleSignUp} className="card-body">
