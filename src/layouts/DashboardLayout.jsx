@@ -33,7 +33,7 @@ const DashboardLayout = () => {
                     to="/dashboard/users"
                     className="flex items-center gap-2 text-2xl"
                   >
-                    Users
+                    Manage Users
                   </NavLink>
                 </li>
               </>
