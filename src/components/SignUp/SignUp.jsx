@@ -4,7 +4,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { createUser } = useAuth();
+  const { createUser, updateUser } = useAuth();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const handleSignUp = (e) => {
@@ -17,6 +17,13 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        if (user?.email) {
+          updateUser(name)
+            .then(() => {})
+            .catch((err) => {
+              console.log(err.message);
+            });
+        }
         if (user?.email) {
           const userInfo = {
             name,
