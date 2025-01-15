@@ -15,6 +15,7 @@ const AddProperties = () => {
 
   const onSubmit = async (data) => {
     const image = { image: data.image[0] };
+    console.log(image);
 
     const res = await axiosPublic.post(
       `https://api.imgbb.com/1/upload?key=${apiKey}`,
