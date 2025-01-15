@@ -80,6 +80,22 @@ const DashboardLayout = () => {
                     My Properties
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/soldproperties"
+                    className="flex items-center gap-2 text-2xl"
+                  >
+                    My Sold Properties
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/requestedproperties"
+                    className="flex items-center gap-2 text-2xl"
+                  >
+                    Requested Properties
+                  </NavLink>
+                </li>
               </>
             )}
             {role === "user" && (

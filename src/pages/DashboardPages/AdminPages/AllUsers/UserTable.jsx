@@ -102,7 +102,9 @@ const UserTable = ({ user, refetch }) => {
           </button>
         </td>
         <td>
-          <button className="btn bg-yellow-400 text-white">Is Fraud</button>
+          {role === "agent" && (
+            <button className="btn bg-yellow-400 text-white">Is Fraud</button>
+          )}
         </td>
         <td>
           <button className="btn bg-red-600 text-white">

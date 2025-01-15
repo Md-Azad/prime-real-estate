@@ -18,6 +18,8 @@ import AdminHome from "../pages/DashboardPages/AdminPages/AdminHome/AdminHome";
 import AdminRoute from "./AdminRoute";
 import MyProperties from "../pages/DashboardPages/AgentPages/MyProperties/MyProperties";
 import UpdateProperty from "../pages/DashboardPages/AgentPages/UpdateProperty/UpdateProperty";
+import SoldProperties from "../pages/DashboardPages/AgentPages/SoldProperties/SoldProperties";
+import RequestedProperties from "../pages/DashboardPages/AgentPages/RequestedProperties/RequestedProperties";
 
 export const router = createBrowserRouter([
   {
@@ -102,6 +104,14 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/update/:id",
         element: <UpdateProperty></UpdateProperty>,
+      },
+      {
+        path: "/dashboard/soldproperties",
+        element: <SoldProperties></SoldProperties>,
+      },
+      {
+        path: "/dashboard/requestedproperties",
+        element: <RequestedProperties></RequestedProperties>,
       },
 
       //   users dashboard routes.
