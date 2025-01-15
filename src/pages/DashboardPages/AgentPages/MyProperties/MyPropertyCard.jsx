@@ -1,7 +1,24 @@
-const MyPropertyCard = ({ property }) => {
-  console.log("property : ", property.image);
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+
+const MyPropertyCard = ({ property, refetch }) => {
   const { _id, name, email, title, location, image, min, max, status } =
     property;
+  const axiosSecure = useAxiosSecure();
+
+  const handlePropertyDelete = async (id) => {
+    const res = await axiosSecure.delete(`/products/${id}`);
+    if (res.data.deletedCount > 0) {
+      refetch();
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your Property has been deleted.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
   return (
     <div className="card bg-base-100 w-80 shadow-xl">
       <figure className=" w-full h-44 ">
@@ -38,7 +55,12 @@ const MyPropertyCard = ({ property }) => {
           >
             Update
           </button>
-          <div className="badge badge-error text-white">Delete</div>
+          <button
+            onClick={() => handlePropertyDelete(_id)}
+            className="badge badge-error text-white"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

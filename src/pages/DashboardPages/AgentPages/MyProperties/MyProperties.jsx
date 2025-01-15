@@ -6,16 +6,16 @@ import MyPropertyCard from "./MyPropertyCard";
 const MyProperties = () => {
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { data: myproperties = [] } = useQuery({
+  const { data: myproperties = [], refetch } = useQuery({
     queryKey: ["myproperties", user?.email],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get(`/properties/${user?.email}`);
+      const res = await axiosSecure.get(`/products/${user?.email}`);
       console.log(res.data);
       return res.data;
     },
   });
-  console.log(myproperties);
+
   return (
     <section>
       <h1>My Properties page. {myproperties.length}</h1>
@@ -24,6 +24,7 @@ const MyProperties = () => {
           <MyPropertyCard
             key={property._id}
             property={property}
+            refetch={refetch}
           ></MyPropertyCard>
         ))}
       </div>
