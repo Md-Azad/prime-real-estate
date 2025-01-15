@@ -13,6 +13,22 @@ const ManageProperties = () => {
   if (isPending) {
     return <progress className="progress w-56"></progress>;
   }
+
+  const handleAcceptProperty = (property) => {
+    const { status, ...rest } = property;
+    const updateProduct = {
+      ...rest,
+      status: "accepted",
+    };
+    axiosSecure
+      .post("/allproducts", updateProduct)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   return (
     <div>
       <div className="overflow-x-auto">
@@ -42,7 +58,10 @@ const ManageProperties = () => {
                   {property?.min} - {property?.max}
                 </td>
                 <td>
-                  <button className="btn bg-green-700 text-white">
+                  <button
+                    onClick={() => handleAcceptProperty(property)}
+                    className="btn bg-green-700 text-white"
+                  >
                     Accept
                   </button>
                 </td>
