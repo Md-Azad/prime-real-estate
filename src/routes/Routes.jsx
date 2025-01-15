@@ -16,6 +16,7 @@ import AgentHome from "../pages/DashboardPages/AgentPages/AgentHome/AgentHome";
 import AddProperties from "../pages/DashboardPages/AgentPages/AddProperties/AddProperties";
 import AdminHome from "../pages/DashboardPages/AdminPages/AdminHome/AdminHome";
 import AdminRoute from "./AdminRoute";
+import MyProperties from "../pages/DashboardPages/AgentPages/MyProperties/MyProperties";
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/addproperties",
         element: <AddProperties></AddProperties>,
+      },
+      {
+        path: "/dashboard/myproperties",
+        element: <MyProperties></MyProperties>,
       },
 
       //   users dashboard routes.

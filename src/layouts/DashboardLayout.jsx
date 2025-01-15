@@ -72,6 +72,14 @@ const DashboardLayout = () => {
                     Add Properties
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/myproperties"
+                    className="flex items-center gap-2 text-2xl"
+                  >
+                    My Properties
+                  </NavLink>
+                </li>
               </>
             )}
             {role === "user" && (
