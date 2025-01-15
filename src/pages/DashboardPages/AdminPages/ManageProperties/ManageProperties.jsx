@@ -3,10 +3,14 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const ManageProperties = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: properties = [], isPending } = useQuery({
+  const {
+    data: properties = [],
+    isPending,
+    refetch,
+  } = useQuery({
     queryKey: ["property"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/products");
+      const res = await axiosSecure.get("/allproducts");
       return res.data;
     },
   });
@@ -15,20 +19,19 @@ const ManageProperties = () => {
   }
 
   const handleAcceptProperty = (property) => {
-    const { status, ...rest } = property;
-    const updateProduct = {
-      ...rest,
-      status: "accepted",
-    };
     axiosSecure
-      .post("/allproducts", updateProduct)
+      .patch(`/products/${property._id}`)
+
       .then((res) => {
-        console.log(res.data);
+        if (res.data.modifiedCount) {
+          refetch();
+        }
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
+  console.log("properties", properties);
   return (
     <div>
       <div className="overflow-x-auto">
@@ -62,11 +65,16 @@ const ManageProperties = () => {
                     onClick={() => handleAcceptProperty(property)}
                     className="btn bg-green-700 text-white"
                   >
-                    Accept
+                    {property?.status === "accepted" ? "verified" : "Accepted"}
                   </button>
                 </td>
                 <td>
-                  <button className="btn bg-red-700 text-white">Reject</button>
+                  <button
+                    disabled={property?.status === "accepted"}
+                    className="btn bg-red-700 text-white"
+                  >
+                    Reject
+                  </button>
                 </td>
               </tr>
             ))}
