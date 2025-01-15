@@ -19,8 +19,9 @@ const ManageProperties = () => {
   }
 
   const handleAcceptProperty = (property) => {
+    const status = "accepted";
     axiosSecure
-      .patch(`/products/${property._id}`)
+      .patch(`/products/${property._id}`, { status })
 
       .then((res) => {
         if (res.data.modifiedCount) {
@@ -31,7 +32,21 @@ const ManageProperties = () => {
         console.log(err.message);
       });
   };
-  console.log("properties", properties);
+
+  const handleRejectStatus = (property) => {
+    const status = "rejected";
+    axiosSecure
+      .patch(`/products/${property._id}`, { status })
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          refetch();
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -63,17 +78,22 @@ const ManageProperties = () => {
                 <td>
                   <button
                     onClick={() => handleAcceptProperty(property)}
-                    className="btn bg-green-700 text-white"
+                    className={`btn bg-green-700 ${
+                      property?.status === "rejected" && "bg-red-500"
+                    } text-white`}
                   >
-                    {property?.status === "accepted" ? "verified" : "Accepted"}
+                    {(property?.status === "accepted" && "Verified") ||
+                      (property?.status === "rejected" && "Rejected") ||
+                      "Accept"}
                   </button>
                 </td>
                 <td>
                   <button
+                    onClick={() => handleRejectStatus(property)}
                     disabled={property?.status === "accepted"}
                     className="btn bg-red-700 text-white"
                   >
-                    Reject
+                    {property?.status === "rejected" ? "Rejected" : "Reject"}
                   </button>
                 </td>
               </tr>
