@@ -18,6 +18,12 @@ const DashboardLayout = () => {
             <p>Always Provides better Home.</p>
           </div>
           <ul className="menu mx-2 mt-4 space-y-2">
+            {role === "fraud" && (
+              <h1>
+                You marked as a fraud. If you have an inquery please write us on
+                : primerealestate@gmail.com
+              </h1>
+            )}
             {role === "admin" && (
               <>
                 <li>
@@ -128,7 +134,13 @@ const DashboardLayout = () => {
           </ul>
         </div>
         <div className="flex-1 p-8">
-          <Outlet></Outlet>
+          {role === "fraud" && (
+            <h1 className="text-red-600 text-3xl text-center">
+              You marked as a fraud. If you have an inquery please write us on :
+              primerealestate@gmail.com
+            </h1>
+          )}
+          {role !== "fraud" && <Outlet></Outlet>}
         </div>
       </section>
     </div>
