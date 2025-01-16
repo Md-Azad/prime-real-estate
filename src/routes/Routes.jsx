@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/HomePage/Home/Home";
 import Login from "../components/Login/Login";
@@ -21,6 +21,7 @@ import SoldProperties from "../pages/DashboardPages/AgentPages/SoldProperties/So
 import RequestedProperties from "../pages/DashboardPages/AgentPages/RequestedProperties/RequestedProperties";
 import MyReviews from "../pages/DashboardPages/UserPages/MyReviews/MyReviews";
 import BoughtProperty from "../pages/DashboardPages/UserPages/BoughtProperty/BoughtProperty";
+import PropertyDetails from "../pages/HomePage/PropertyDetails/PropertyDetails";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AllProperties></AllProperties>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/allProperties/details/:id",
+        element: (
+          <PrivateRoute>
+            <PropertyDetails></PropertyDetails>
           </PrivateRoute>
         ),
       },

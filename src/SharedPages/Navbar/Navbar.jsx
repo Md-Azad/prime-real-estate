@@ -57,7 +57,7 @@ const Navbar = () => {
         </div>
         <Link to="/" className="flex items-center">
           <img className="w-12" src={logo} alt="" />
-          <h1 className="text-3xl font-bold">Prime Real Estate</h1>
+          <h1 className="md:text-3xl font-bold">Prime Real Estate</h1>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
