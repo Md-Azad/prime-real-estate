@@ -71,6 +71,36 @@ const UserTable = ({ user, refetch }) => {
     }
   };
 
+  const handleFraud = (em) => {
+    axiosSecure
+      .delete("/product/delete", { data: { email: em } })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+    const updatedRole = "fraud";
+    axiosSecure
+      .patch(`/users/${email}`, { role: updatedRole })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${name} is marked as fraud now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   return (
     <tbody>
       {}
@@ -103,7 +133,12 @@ const UserTable = ({ user, refetch }) => {
         </td>
         <td>
           {role === "agent" && (
-            <button className="btn bg-yellow-400 text-white">Is Fraud</button>
+            <button
+              onClick={() => handleFraud(email)}
+              className="btn bg-yellow-400 text-white"
+            >
+              Is Fraud
+            </button>
           )}
         </td>
         <td>

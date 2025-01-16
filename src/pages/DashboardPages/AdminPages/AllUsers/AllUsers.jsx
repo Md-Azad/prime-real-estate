@@ -11,6 +11,7 @@ const AllUsers = () => {
       return res.data;
     },
   });
+
   return (
     <div>
       <h1>Here is All users.{users.length}</h1>
