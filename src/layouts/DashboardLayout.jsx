@@ -122,6 +122,22 @@ const DashboardLayout = () => {
                     My Wishlist
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/boughtproperty"
+                    className="flex items-center gap-2 text-2xl"
+                  >
+                    My Bought Property
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/myreviews"
+                    className="flex items-center gap-2 text-2xl"
+                  >
+                    My Reviews
+                  </NavLink>
+                </li>
               </>
             )}
             <div className="divider divider-info"></div>

@@ -119,7 +119,7 @@ const UserTable = ({ user, refetch }) => {
             disabled={dis}
             className="btn bg-purple-600 text-white"
           >
-            Make Admin
+            {role === "fraud" ? "Fraud" : "Make Admin"}
           </button>
         </td>
         <td>
@@ -128,7 +128,7 @@ const UserTable = ({ user, refetch }) => {
             disabled={disAgent}
             className="btn bg-blue-600 text-white"
           >
-            Make Agent
+            {role === "fraud" ? "Fraud" : "Make Agent"}
           </button>
         </td>
         <td>

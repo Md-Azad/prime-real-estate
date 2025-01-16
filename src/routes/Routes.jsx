@@ -14,12 +14,13 @@ import ManageProperties from "../pages/DashboardPages/AdminPages/ManagePropertie
 import ManageReviews from "../pages/DashboardPages/AdminPages/ManageReviews/ManageReviews";
 import AgentHome from "../pages/DashboardPages/AgentPages/AgentHome/AgentHome";
 import AddProperties from "../pages/DashboardPages/AgentPages/AddProperties/AddProperties";
-import AdminHome from "../pages/DashboardPages/AdminPages/AdminHome/AdminHome";
 import AdminRoute from "./AdminRoute";
 import MyProperties from "../pages/DashboardPages/AgentPages/MyProperties/MyProperties";
 import UpdateProperty from "../pages/DashboardPages/AgentPages/UpdateProperty/UpdateProperty";
 import SoldProperties from "../pages/DashboardPages/AgentPages/SoldProperties/SoldProperties";
 import RequestedProperties from "../pages/DashboardPages/AgentPages/RequestedProperties/RequestedProperties";
+import MyReviews from "../pages/DashboardPages/UserPages/MyReviews/MyReviews";
+import BoughtProperty from "../pages/DashboardPages/UserPages/BoughtProperty/BoughtProperty";
 
 export const router = createBrowserRouter([
   {
@@ -123,6 +124,14 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/wishlist",
         element: <WishList></WishList>,
+      },
+      {
+        path: "/dashboard/boughtproperty",
+        element: <BoughtProperty></BoughtProperty>,
+      },
+      {
+        path: "/dashboard/myreviews",
+        element: <MyReviews></MyReviews>,
       },
     ],
   },
