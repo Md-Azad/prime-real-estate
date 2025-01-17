@@ -22,6 +22,7 @@ import RequestedProperties from "../pages/DashboardPages/AgentPages/RequestedPro
 import MyReviews from "../pages/DashboardPages/UserPages/MyReviews/MyReviews";
 import BoughtProperty from "../pages/DashboardPages/UserPages/BoughtProperty/BoughtProperty";
 import PropertyDetails from "../pages/HomePage/PropertyDetails/PropertyDetails";
+import AgentRoute from "./AgentRoute";
 
 export const router = createBrowserRouter([
   {
@@ -105,7 +106,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/addproperties",
-        element: <AddProperties></AddProperties>,
+        element: (
+          <AgentRoute>
+            <AddProperties></AddProperties>
+          </AgentRoute>
+        ),
       },
       {
         path: "/dashboard/myproperties",

@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const AddProperties = () => {
   const { user } = useAuth();
+
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
@@ -25,13 +26,15 @@ const AddProperties = () => {
 
     if (res.data.success) {
       const product = {
-        name: user.displayName,
+        name: user.displayName || user.email.split("@")[0],
         email: user.email,
         title: data.title,
         location: data.location,
+        description: data.description,
         min: data.min,
         max: data.max,
         image: res.data?.data?.display_url,
+        reviews: [],
         status: "pending",
       };
 
@@ -93,7 +96,7 @@ const AddProperties = () => {
               <input
                 type="text"
                 {...register("agentName")}
-                defaultValue={user?.displayName}
+                defaultValue={user?.displayName || user.email.split("@")[0]}
                 readOnly
                 placeholder="Agent Name"
                 className="input input-bordered"
@@ -135,6 +138,19 @@ const AddProperties = () => {
                 />
               </div>
             </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Description</span>
+              </label>
+              <input
+                type="text"
+                {...register("description")}
+                placeholder="Description"
+                className="input input-bordered"
+                required
+              />
+            </div>
+
             <input
               type="file"
               {...register("image")}

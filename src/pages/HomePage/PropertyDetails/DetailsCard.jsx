@@ -33,9 +33,7 @@ const DetailsCard = ({ property }) => {
           </h1>
           <p className="text-xl">Agent Name: {property?.name}</p>
           <p className=" text-xl">Location:{property?.location}</p>
-          <p className="text-xl text-red-700">
-            Description will be here letter.
-          </p>
+          <p className="text-xl ">Description: {property?.description}</p>
 
           <p className="text-xl">
             Price Range: ${property?.max} - ${property?.min}
@@ -77,21 +75,6 @@ const DetailsCard = ({ property }) => {
               </div>
             </div>
           </dialog>
-          {/* {isShow && (
-            <div className=" h-36 flex flex-col justify-center items-center space-y-2">
-              <h1>Write a review</h1>
-              <textarea
-                className="textarea textarea-primary w-1/3 h-32 pb-8"
-                placeholder="Write here"
-              ></textarea>
-              <button
-                onClick={() => handleAddReview(property?._id)}
-                className="btn btn-info btn-sm "
-              >
-                Submit
-              </button>
-            </div>
-          )} */}
         </div>
       </div>
     </div>
