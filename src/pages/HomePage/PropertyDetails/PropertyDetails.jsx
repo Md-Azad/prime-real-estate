@@ -18,7 +18,6 @@ const PropertyDetails = () => {
 
   return (
     <div>
-      <h1>Hello</h1>
       <DetailsCard property={property}></DetailsCard>
     </div>
   );
