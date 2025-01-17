@@ -11,11 +11,11 @@ const PropertyDetails = () => {
     queryKey: ["property", id?.id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/productdetails/${id.id}`);
-      console.log(res.data);
+
       return res.data;
     },
   });
-  console.log(property);
+
   return (
     <div>
       <DetailsCard property={property}></DetailsCard>

@@ -1,7 +1,20 @@
-import { useState } from "react";
+import { useRef } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const DetailsCard = ({ property }) => {
-  const [isShow, setIsShow] = useState(false);
+  const reviewRef = useRef(null);
+  const axiosSecure = useAxiosSecure();
+  const handleAddReview = (id) => {
+    let review = reviewRef.current.value;
+    axiosSecure
+      .patch(`/addreview/${id}`, { review })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   return (
     <div className=" bg-gray-200 min-h-screen rounded-md   ">
       <div className=" flex-col  items-center justify-center   ">
@@ -32,22 +45,53 @@ const DetailsCard = ({ property }) => {
               Add to Wishlist
             </button>
             <button
-              onClick={() => setIsShow(!isShow)}
+              onClick={() => document.getElementById("my_modal_3").showModal()}
               className=" ml-4 btn bg-purple-700 hover:bg-purple-500 text-white"
             >
               Add a Review
             </button>
           </div>
-          {isShow && (
+          {/* You can open the modal using document.getElementById('ID').showModal() method */}
+
+          <dialog id="my_modal_3" className="modal">
+            <div className="modal-box">
+              <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              <div className="flex flex-col mt-4">
+                <h1>Add a review</h1>
+                <textarea
+                  ref={reviewRef}
+                  className="textarea textarea-primary "
+                  placeholder="Write here"
+                ></textarea>
+
+                <button
+                  onClick={() => handleAddReview(property?._id)}
+                  className="btn btn-info btn-sm  mt-2"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </dialog>
+          {/* {isShow && (
             <div className=" h-36 flex flex-col justify-center items-center space-y-2">
               <h1>Write a review</h1>
               <textarea
                 className="textarea textarea-primary w-1/3 h-32 pb-8"
                 placeholder="Write here"
               ></textarea>
-              <button className="btn btn-info btn-sm ">Submit</button>
+              <button
+                onClick={() => handleAddReview(property?._id)}
+                className="btn btn-info btn-sm "
+              >
+                Submit
+              </button>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

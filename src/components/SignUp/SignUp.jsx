@@ -11,6 +11,7 @@ const SignUp = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
+    const photo = form.photo.value;
     const email = form.email.value;
 
     const password = form.password.value;
@@ -18,7 +19,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         if (user?.email) {
-          updateUser(name)
+          updateUser(name, photo)
             .then(() => {})
             .catch((err) => {
               console.log(err.message);
@@ -28,6 +29,7 @@ const SignUp = () => {
           const userInfo = {
             name,
             email: user.email,
+            image: photo,
             role: "user",
           };
           axiosPublic.post("/users", userInfo).then((res) => {
@@ -64,6 +66,18 @@ const SignUp = () => {
                 type="text"
                 name="name"
                 placeholder="Name"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                type="text"
+                name="photo"
+                placeholder="Photo URL"
                 className="input input-bordered"
                 required
               />
