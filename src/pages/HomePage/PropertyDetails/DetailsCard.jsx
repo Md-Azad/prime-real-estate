@@ -1,15 +1,29 @@
 import { useRef } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const DetailsCard = ({ property }) => {
   const reviewRef = useRef(null);
   const axiosSecure = useAxiosSecure();
   const handleAddReview = (id) => {
     let review = reviewRef.current.value;
+    const reviewDoc = {
+      propertyId: id,
+      review: review,
+      status: "pending",
+    };
     axiosSecure
-      .patch(`/addreview/${id}`, { review })
+      .post(`/addreview`, { reviewDoc })
       .then((res) => {
-        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Review is under concideration.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       })
       .catch((err) => {
         console.log(err.message);
@@ -66,12 +80,14 @@ const DetailsCard = ({ property }) => {
                   placeholder="Write here"
                 ></textarea>
 
-                <button
-                  onClick={() => handleAddReview(property?._id)}
-                  className="btn btn-info btn-sm  mt-2"
-                >
-                  Submit
-                </button>
+                <form method="dialog">
+                  <button
+                    onClick={() => handleAddReview(property?._id)}
+                    className="btn btn-info btn-sm  mt-2"
+                  >
+                    Submit
+                  </button>
+                </form>
               </div>
             </div>
           </dialog>

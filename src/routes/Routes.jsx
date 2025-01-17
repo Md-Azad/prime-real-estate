@@ -102,7 +102,11 @@ export const router = createBrowserRouter([
 
       {
         path: "/dashboard/agenthome",
-        element: <AgentHome></AgentHome>,
+        element: (
+          <AgentRoute>
+            <AgentHome></AgentHome>
+          </AgentRoute>
+        ),
       },
       {
         path: "/dashboard/addproperties",
