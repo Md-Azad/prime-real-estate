@@ -94,9 +94,11 @@ const DetailsCard = ({ property }) => {
                 This Property yet to receive a review.
               </h1>
             )}
-            <h1 className="text-xl font-bold">
-              What People say About this Property.
-            </h1>
+            {myreviews.length > 0 && (
+              <h1 className="text-xl font-bold">
+                What People say About this Property.
+              </h1>
+            )}
             {myreviews.map((review, index) => (
               <div key={review._id}>
                 <h1>

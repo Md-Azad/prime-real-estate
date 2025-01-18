@@ -5,10 +5,10 @@ const ManageReviews = () => {
   const axiosSecure = useAxiosSecure();
 
   const { data: reviews = [] } = useQuery({
-    queryKey: ["review"],
+    queryKey: ["reviews"],
     queryFn: async () => {
       const res = await axiosSecure.get("/reviews");
-      console.log("reviews", res.data);
+      console.log("reviews---------", res.data);
       return res.data;
     },
   });
