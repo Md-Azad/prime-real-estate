@@ -55,7 +55,7 @@ const DetailsCard = ({ property }) => {
     }
   };
 
-  const handleAddToWishlist = (id) => {
+  const handleAddToWishlist = (property) => {
     if (userInfo !== "user") {
       return Swal.fire({
         icon: "error",
@@ -65,7 +65,8 @@ const DetailsCard = ({ property }) => {
     }
     const data = {
       userEmail: user.email,
-      propertyId: id,
+      propertyId: property._id,
+      agentEmail: property.email,
       status: "pending",
     };
     axiosSecure
@@ -117,7 +118,7 @@ const DetailsCard = ({ property }) => {
           </p>
           <div>
             <button
-              onClick={() => handleAddToWishlist(property._id)}
+              onClick={() => handleAddToWishlist(property)}
               className="btn bg-purple-700 hover:bg-purple-500 text-white"
             >
               Add to Wishlist
