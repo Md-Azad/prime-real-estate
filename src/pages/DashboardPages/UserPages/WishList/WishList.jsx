@@ -30,53 +30,59 @@ const WishList = () => {
   return (
     <div>
       {/* <h1>WishList will be here for the user. {wishList.length}</h1> */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {wishList.map((list) => (
-          <div key={list._id} className="border-2 p-2 rounded-lg">
-            <div className="">
-              <img
-                className="w-full h-full object-contain rounded-lg"
-                src={list?.propertyImage}
-                alt=""
-              />
-            </div>
-            <div className="bg-slate-200">
-              <div className="flex flex-col items-center">
-                <p>Agent Name: {list?.agentName}</p>
-                {/* <img
+      {wishList.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {wishList.map((list) => (
+            <div key={list._id} className="border-2 p-2 rounded-lg">
+              <div className="">
+                <img
+                  className="w-full h-full object-contain rounded-lg"
+                  src={list?.propertyImage}
+                  alt=""
+                />
+              </div>
+              <div className="bg-slate-200">
+                <div className="flex flex-col items-center">
+                  <p>Agent Name: {list?.agentName}</p>
+                  {/* <img
                   className="w-12 h-12 rounded-lg"
                   src={list?.propertyImage}
                   alt=""
                 /> */}
-              </div>
-              <p className="text-center">
-                Property Name: {list?.propertyTitle}
-              </p>
-              <p className="text-center">Location: {list?.propertyLocation}</p>
-              <p className="text-center">
-                {" "}
-                Varification Status: {list?.varificationStatus}
-              </p>
-              <p className="text-center">
-                Price Range: ${list?.propertyMin} - ${list?.propertyMax}
-              </p>
-              <div className="flex flex-col md:flex-row justify-between">
-                <Link to={`/dashboard/makeoffer/${list.propertyId}`}>
-                  <button className="btn btn-sm btn-accent text-white ">
-                    Make Offer
+                </div>
+                <p className="text-center">
+                  Property Name: {list?.propertyTitle}
+                </p>
+                <p className="text-center">
+                  Location: {list?.propertyLocation}
+                </p>
+                <p className="text-center">
+                  {" "}
+                  Varification Status: {list?.varificationStatus}
+                </p>
+                <p className="text-center">
+                  Price Range: ${list?.propertyMin} - ${list?.propertyMax}
+                </p>
+                <div className="flex flex-col md:flex-row justify-between">
+                  <Link to={`/dashboard/makeoffer/${list.propertyId}`}>
+                    <button className="btn btn-sm btn-accent text-white ">
+                      Make Offer
+                    </button>
+                  </Link>
+                  <button
+                    onClick={() => handleWishListDelete(list._id)}
+                    className="btn btn-sm btn-error text-white"
+                  >
+                    Remove
                   </button>
-                </Link>
-                <button
-                  onClick={() => handleWishListDelete(list._id)}
-                  className="btn btn-sm btn-error text-white"
-                >
-                  Remove
-                </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <h1>Add some property in your wishlist.</h1>
+      )}
     </div>
   );
 };
