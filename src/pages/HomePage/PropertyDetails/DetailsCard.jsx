@@ -16,7 +16,7 @@ const DetailsCard = ({ property }) => {
     queryKey: ["myreviews", property._id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/reviews/${property._id}`);
-      console.log("reviews", res.data);
+
       return res.data;
     },
   });
@@ -64,10 +64,19 @@ const DetailsCard = ({ property }) => {
       });
     }
     const data = {
-      userEmail: user.email,
+      buyerEmail: user.email,
+      buyerName: user.displayName,
       propertyId: property._id,
       agentEmail: property.email,
-      status: "pending",
+      agentName: property.name,
+      propertyLocation: property.location,
+      propertyImage: property.image,
+      propertyMin: property.min,
+      propertyMax: property.max,
+      varificationStatus: property.status,
+      propertyTitle: property.title,
+
+      status: "listed",
     };
     axiosSecure
       .post("/wishlist", data)

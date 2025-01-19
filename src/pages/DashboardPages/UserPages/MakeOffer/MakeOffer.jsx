@@ -43,7 +43,7 @@ const MakeOffer = () => {
       for: product._id,
       offerPrice: data.offer,
       date: data.date,
-      status: "offered",
+      status: "pending",
     };
 
     axiosSecure
@@ -138,7 +138,7 @@ const MakeOffer = () => {
                 <input
                   type="number"
                   {...register("offer")}
-                  placeholder="Minimum Price"
+                  placeholder={`min value- ${product.min}- max value-${product.max}`}
                   className="input input-bordered w-full"
                   required
                 />

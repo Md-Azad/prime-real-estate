@@ -9,11 +9,11 @@ const WishList = () => {
   const { data: wishList = [], refetch } = useQuery({
     queryKey: ["mywishlist"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/wishlist/${user.email}`);
+      const res = await axiosSecure.get(`/mywishlist/${user.email}`);
       return res.data;
     },
   });
-  console.log(wishList);
+  console.log("mywishlist", wishList);
 
   const handleWishListDelete = (id) => {
     axiosSecure
@@ -36,24 +36,30 @@ const WishList = () => {
             <div className="">
               <img
                 className="w-full h-full object-contain rounded-lg"
-                src={list.myList[0].image}
+                src={list?.propertyImage}
                 alt=""
               />
             </div>
             <div className="bg-slate-200">
               <div className="flex flex-col items-center">
-                <p>Agent Name: {list.myList[0].name}</p>
-                <img
+                <p>Agent Name: {list?.agentName}</p>
+                {/* <img
                   className="w-12 h-12 rounded-lg"
-                  src={list.userDetails[0].image}
+                  src={list?.propertyImage}
                   alt=""
-                />
+                /> */}
               </div>
               <p className="text-center">
-                Property Name: {list.myList[0].title}
+                Property Name: {list?.propertyTitle}
               </p>
-              <p className="text-center">Location: {list.myList[0].location}</p>
-              <p className="text-center"> Status: {list.status}</p>
+              <p className="text-center">Location: {list?.propertyLocation}</p>
+              <p className="text-center">
+                {" "}
+                Varification Status: {list?.varificationStatus}
+              </p>
+              <p className="text-center">
+                Price Range: ${list?.propertyMin} - ${list?.propertyMax}
+              </p>
               <div className="flex flex-col md:flex-row justify-between">
                 <Link to={`/dashboard/makeoffer/${list.propertyId}`}>
                   <button className="btn btn-sm btn-accent text-white ">
