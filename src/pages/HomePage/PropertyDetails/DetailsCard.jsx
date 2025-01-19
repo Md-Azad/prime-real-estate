@@ -54,6 +54,29 @@ const DetailsCard = ({ property }) => {
         });
     }
   };
+
+  const handleAddToWishlist = (id) => {
+    if (userInfo !== "user") {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Only User Can Buy Property.",
+      });
+    }
+    const data = {
+      userEmail: user.email,
+      propertyId: id,
+      status: "pending",
+    };
+    axiosSecure
+      .post("/wishlist", data)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   return (
     <div className=" bg-gray-200 min-h-screen rounded-md   ">
       <div className=" flex-col  items-center justify-center   ">
@@ -78,7 +101,10 @@ const DetailsCard = ({ property }) => {
             Price Range: ${property?.max} - ${property?.min}
           </p>
           <div>
-            <button className="btn bg-purple-700 hover:bg-purple-500 text-white">
+            <button
+              onClick={() => handleAddToWishlist(property._id)}
+              className="btn bg-purple-700 hover:bg-purple-500 text-white"
+            >
               Add to Wishlist
             </button>
             <button
