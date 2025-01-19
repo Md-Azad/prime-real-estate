@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const WishList = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const { data: wishList = [] } = useQuery({
+  const { data: wishList = [], refetch } = useQuery({
     queryKey: ["mywishlist"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/wishlist/${user.email}`);
@@ -13,6 +14,19 @@ const WishList = () => {
     },
   });
   console.log(wishList);
+
+  const handleWishListDelete = (id) => {
+    axiosSecure
+      .delete(`/wishlist/${id}`)
+      .then((res) => {
+        if (res.data.deletedCount > 0) {
+          refetch();
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   return (
     <div>
       {/* <h1>WishList will be here for the user. {wishList.length}</h1> */}
@@ -41,10 +55,15 @@ const WishList = () => {
               <p className="text-center">Location: {list.myList[0].location}</p>
               <p className="text-center"> Status: {list.status}</p>
               <div className="flex flex-col md:flex-row justify-between">
-                <button className="btn btn-sm btn-accent text-white ">
-                  Make Offer
-                </button>
-                <button className="btn btn-sm btn-error text-white">
+                <Link to={`/dashboard/makeoffer/${list.propertyId}`}>
+                  <button className="btn btn-sm btn-accent text-white ">
+                    Make Offer
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleWishListDelete(list._id)}
+                  className="btn btn-sm btn-error text-white"
+                >
                   Remove
                 </button>
               </div>

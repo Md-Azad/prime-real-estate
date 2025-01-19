@@ -23,6 +23,7 @@ import MyReviews from "../pages/DashboardPages/UserPages/MyReviews/MyReviews";
 import BoughtProperty from "../pages/DashboardPages/UserPages/BoughtProperty/BoughtProperty";
 import PropertyDetails from "../pages/HomePage/PropertyDetails/PropertyDetails";
 import AgentRoute from "./AgentRoute";
+import MakeOffer from "../pages/DashboardPages/UserPages/MakeOffer/MakeOffer";
 
 export const router = createBrowserRouter([
   {
@@ -150,6 +151,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/myreviews",
         element: <MyReviews></MyReviews>,
+      },
+      {
+        path: "/dashboard/makeoffer/:id",
+        element: <MakeOffer></MakeOffer>,
       },
     ],
   },
