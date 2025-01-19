@@ -6,7 +6,7 @@ import { FaTrashAlt } from "react-icons/fa";
 const ManageReviews = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: reviews = [] } = useQuery({
+  const { data: reviews = [], refetch } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
       const res = await axiosSecure.get("/reviews");
@@ -14,6 +14,20 @@ const ManageReviews = () => {
       return res.data;
     },
   });
+
+  const handleReviewDelete = (id) => {
+    axiosSecure
+      .delete(`/reviews/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.deletedCount > 0) {
+          refetch();
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
   return (
     <div>
@@ -48,10 +62,13 @@ const ManageReviews = () => {
                     )}
                   </td>
                   <td>{review?.reviewDetails[0].name}</td>
-                  <td>{review?.reviewerEmail}</td>
+                  <td>{review?._id}</td>
                   <td>{review.review}</td>
                   <td>
-                    <button className="btn btn-error">
+                    <button
+                      onClick={() => handleReviewDelete(review._id)}
+                      className="btn btn-error"
+                    >
                       <FaTrashAlt className="text-white"></FaTrashAlt>
                     </button>
                   </td>
