@@ -71,10 +71,25 @@ const DetailsCard = ({ property }) => {
     axiosSecure
       .post("/wishlist", data)
       .then((res) => {
-        console.log(res.data);
+        if (res.data.message) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Already wishlisted..",
+          });
+        }
+        if (res.data?.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Added to the wishlist",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log("err", err.message);
       });
   };
   return (
