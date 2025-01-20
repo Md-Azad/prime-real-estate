@@ -4,10 +4,12 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useRole from "../../../hooks/useRole";
 import { useQuery } from "@tanstack/react-query";
+import moment from "moment";
 
 const DetailsCard = ({ property }) => {
   const { user } = useAuth();
   const [userInfo] = useRole();
+  console.log(moment().format(" MMMM Do YYYY, h:mm a"));
 
   const reviewRef = useRef(null);
   const axiosSecure = useAxiosSecure();
@@ -21,7 +23,9 @@ const DetailsCard = ({ property }) => {
     },
   });
 
-  const handleAddReview = (id) => {
+  const handleAddReview = (property) => {
+    console.log(property);
+    console.log(property);
     if (userInfo !== "user") {
       return Swal.fire({
         icon: "error",
@@ -31,15 +35,19 @@ const DetailsCard = ({ property }) => {
     } else {
       let review = reviewRef.current.value;
       const reviewDoc = {
-        propertyId: id,
+        propertyId: property._id,
+        propertyTitle: property.title,
+        agentName: property.name,
         reviewerEmail: user?.email,
         review: review,
+        time: moment().format(" MMMM Do YYYY, h:mm a"),
       };
       axiosSecure
         .post(`/addreview`, { reviewDoc })
         .then((res) => {
           if (res.data.insertedId) {
             refetch();
+            reviewRef.current.value = null;
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -176,7 +184,7 @@ const DetailsCard = ({ property }) => {
 
                 <form method="dialog">
                   <button
-                    onClick={() => handleAddReview(property?._id)}
+                    onClick={() => handleAddReview(property)}
                     className="btn btn-info btn-sm  mt-2"
                   >
                     Submit

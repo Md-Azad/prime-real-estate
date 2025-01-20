@@ -32,7 +32,7 @@ const BoughtProperty = () => {
               <p>Offered Price: {pro?.offerPrice}</p>
               <p>Status: {pro.status}</p>
             </div>
-            {pro?.status === "pending" && (
+            {pro?.status === "accepted" && (
               <button className="btn bg-purple-600 text-white">Pay</button>
             )}
           </div>
