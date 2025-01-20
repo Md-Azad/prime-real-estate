@@ -8,7 +8,7 @@ const BoughtProperty = () => {
   const { data: myProperty = [] } = useQuery({
     queryKey: ["myBought", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/myboughtlist/${user?.email}`);
+      const res = await axiosSecure.get(`/buy/${user?.email}`);
       return res.data;
     },
   });
