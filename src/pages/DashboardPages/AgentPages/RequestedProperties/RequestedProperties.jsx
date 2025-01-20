@@ -34,47 +34,55 @@ const RequestedProperties = () => {
   };
   return (
     <div>
-      <h1>Requested properties.{requestedList.length}</h1>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Property Title</th>
-              <th>Location</th>
-              <th>Buyer Name</th>
-              <th>Buyer Email</th>
-              <th>Offered Price</th>
-              <th>Action</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {requestedList.map((list, idx) => (
-              <tr key={list._id}>
-                <th>{idx + 1}</th>
-                <td>{list?.propertyTitle} </td>
-                <td>{list?.propertyLocation}</td>
-                <td>{list?.buyerName}</td>
-                <td>{list?.buyerEmail}</td>
-                <td className="text-center">${list?.offerPrice}</td>
-                <td>
-                  <button
-                    onClick={() => handleAcceptOffer(list)}
-                    className="btn btn-success text-white"
-                  >
-                    Accept
-                  </button>
-                </td>
-                <td className=" btn btn-error">
-                  <ImCross className="text-white text-2xl"></ImCross>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {requestedList.length > 0 ? (
+        <>
+          <div className="overflow-x-auto">
+            <table className="table table-zebra">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Property Title</th>
+                  <th>Location</th>
+                  <th>Buyer Name</th>
+                  <th>Buyer Email</th>
+                  <th>Offered Price</th>
+                  <th>Action</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {requestedList.map((list, idx) => (
+                  <tr key={list._id}>
+                    <th>{idx + 1}</th>
+                    <td>{list?.propertyTitle} </td>
+                    <td>{list?.propertyLocation}</td>
+                    <td>{list?.buyerName}</td>
+                    <td>{list?.buyerEmail}</td>
+                    <td className="text-center">${list?.offerPrice}</td>
+                    <td>
+                      <button
+                        onClick={() => handleAcceptOffer(list)}
+                        className="btn btn-success text-white"
+                      >
+                        Accept
+                      </button>
+                    </td>
+                    <td className=" btn btn-error">
+                      <ImCross className="text-white text-2xl"></ImCross>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : (
+        <h1 className="text-2xl md:text-4xl text-center text-red-700 font-bold">
+          {" "}
+          You Do not have any Request for properties.
+        </h1>
+      )}
     </div>
   );
 };

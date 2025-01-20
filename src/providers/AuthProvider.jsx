@@ -34,6 +34,10 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  const deleteUser = (user) => {
+    return deleteUser(user);
+  };
+
   const signInUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -57,6 +61,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     logOut,
     updateUser,
+    deleteUser,
   };
 
   useEffect(() => {

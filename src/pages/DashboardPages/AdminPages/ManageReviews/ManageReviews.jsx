@@ -31,7 +31,6 @@ const ManageReviews = () => {
 
   return (
     <div>
-      <h1>Manage Reviews: {reviews.length}</h1>
       {reviews.length > 0 ? (
         <div className="overflow-x-auto">
           <table className="table table-zebra">
@@ -62,7 +61,7 @@ const ManageReviews = () => {
                     )}
                   </td>
                   <td>{review?.reviewDetails[0].name}</td>
-                  <td>{review?._id}</td>
+                  <td>{review?.reviewerEmail}</td>
                   <td>{review.review}</td>
                   <td>
                     <button

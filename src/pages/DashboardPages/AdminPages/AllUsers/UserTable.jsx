@@ -101,6 +101,21 @@ const UserTable = ({ user, refetch }) => {
       });
   };
 
+  const handleDeleteUser = (email) => {
+    axiosSecure.get(`/singleuser/${email}`).then((res) => {
+      if (res.data.uid) {
+        axiosSecure
+          .delete(`/delete-user/${res.data.uid}`)
+          .then((res) => {
+            console.log(res.data.remove.deletedCount);
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      }
+    });
+  };
+
   return (
     <tbody>
       {}
@@ -142,7 +157,10 @@ const UserTable = ({ user, refetch }) => {
           )}
         </td>
         <td>
-          <button className="btn bg-red-600 text-white">
+          <button
+            onClick={() => handleDeleteUser(email)}
+            className="btn bg-red-600 text-white"
+          >
             <MdDeleteForever className="text-xl" />
           </button>
         </td>

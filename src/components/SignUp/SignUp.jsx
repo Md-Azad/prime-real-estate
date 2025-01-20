@@ -18,6 +18,7 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
+        console.log(user.uid);
         if (user?.email) {
           updateUser(name, photo)
             .then(() => {})
@@ -27,6 +28,7 @@ const SignUp = () => {
         }
         if (user?.email) {
           const userInfo = {
+            uid: user.uid,
             name,
             email: user.email,
             image: photo,
