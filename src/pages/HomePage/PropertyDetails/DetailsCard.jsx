@@ -9,7 +9,6 @@ import moment from "moment";
 const DetailsCard = ({ property }) => {
   const { user } = useAuth();
   const [userInfo] = useRole();
-  console.log(moment().format(" MMMM Do YYYY, h:mm a"));
 
   const reviewRef = useRef(null);
   const axiosSecure = useAxiosSecure();
@@ -18,14 +17,13 @@ const DetailsCard = ({ property }) => {
     queryKey: ["myreviews", property._id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/reviews/${property._id}`);
-
+      console.log(res.data);
       return res.data;
     },
   });
+  console.log(property);
 
   const handleAddReview = (property) => {
-    console.log(property);
-    console.log(property);
     if (userInfo !== "user") {
       return Swal.fire({
         icon: "error",
@@ -42,6 +40,7 @@ const DetailsCard = ({ property }) => {
         review: review,
         time: moment().format(" MMMM Do YYYY, h:mm a"),
       };
+
       axiosSecure
         .post(`/addreview`, { reviewDoc })
         .then((res) => {

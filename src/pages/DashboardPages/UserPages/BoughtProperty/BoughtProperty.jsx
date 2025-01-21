@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const BoughtProperty = () => {
   const { user } = useAuth();
@@ -33,7 +34,9 @@ const BoughtProperty = () => {
               <p>Status: {pro.status}</p>
             </div>
             {pro?.status === "accepted" && (
-              <button className="btn bg-purple-600 text-white">Pay</button>
+              <Link to={`/dashboard/payment/${pro._id}`}>
+                <button className="btn bg-purple-600 text-white">Pay</button>
+              </Link>
             )}
           </div>
         </div>

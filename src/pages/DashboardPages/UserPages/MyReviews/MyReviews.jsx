@@ -14,7 +14,7 @@ const MyReviews = () => {
       return res.data;
     },
   });
-  console.log(myreviews);
+
   const handleDeleteReview = (review) => {
     axiosSecure
       .delete(`/myreviews/${review.reviewerEmail}?id=${review._id}`)
@@ -35,6 +35,7 @@ const MyReviews = () => {
         console.log(err.message);
       });
   };
+  console.log(myreviews);
   return (
     <div>
       <h1>My Reviews: {myreviews.length}</h1>
@@ -53,7 +54,7 @@ const MyReviews = () => {
           </thead>
           <tbody>
             {myreviews.map((review, idx) => (
-              <tr>
+              <tr key={review._id}>
                 <th>{idx + 1} </th>
                 <td>{review?.propertyTitle ? review?.propertyTitle : "N/A"}</td>
                 <td>{review.agentName}</td>
