@@ -66,6 +66,13 @@ const CheckoutForm = () => {
       console.log(confirmError);
     } else {
       console.log("payment Intent", paymentIntent);
+      if (paymentIntent.status === "succeeded") {
+        axiosSecure
+          .patch(`/savepayment/${id}`, { paymentId: paymentIntent.id })
+          .then((res) => {
+            console.log("payment successfull", res.data);
+          });
+      }
     }
   };
   return (
