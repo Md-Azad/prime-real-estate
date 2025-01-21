@@ -30,8 +30,19 @@ const BoughtProperty = () => {
           <div className="flex items-center justify-between">
             <div className="text-xl font-semibold mt-2">
               <p> Agent Name: {pro?.agentName}</p>
-              <p>Offered Price: {pro?.offerPrice}</p>
-              <p>Status: {pro.status}</p>
+              <p>
+                {pro?.status === "bought" ? "Sold Price" : "Offered Price"}: $
+                {pro?.offerPrice}
+              </p>
+              <p>
+                Status:{" "}
+                <span className="text-purple-700">
+                  {pro.status && "Bought"}
+                </span>
+              </p>
+              <p className="text-green-700 text-sm">
+                PaymentId: {pro.paymentId}
+              </p>
             </div>
             {pro?.status === "accepted" && (
               <Link to={`/dashboard/payment/${pro._id}`}>
