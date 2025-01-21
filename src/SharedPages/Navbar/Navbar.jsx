@@ -29,7 +29,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-slate-400 sticky top-0 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,7 +61,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        <ul className="menu menu-horizontal text-xl font-bold px-1">
+          {navLinks}
+        </ul>
       </div>
       <div className="navbar-end">
         {user?.email ? (
