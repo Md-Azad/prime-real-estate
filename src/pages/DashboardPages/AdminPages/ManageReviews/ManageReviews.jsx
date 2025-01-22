@@ -1,19 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-
 import { FaTrashAlt } from "react-icons/fa";
+import useReview from "../../../../hooks/useReview";
 
 const ManageReviews = () => {
   const axiosSecure = useAxiosSecure();
-
-  const { data: reviews = [], refetch } = useQuery({
-    queryKey: ["reviews"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/reviews");
-
-      return res.data;
-    },
-  });
+  const [reviews, refetch] = useReview();
 
   const handleReviewDelete = (id) => {
     axiosSecure

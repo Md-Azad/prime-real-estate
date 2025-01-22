@@ -8,7 +8,7 @@ const Advertisement = () => {
   const addProperties = [...properties];
   const editable = addProperties.slice(0, 4);
   return (
-    <div>
+    <div className="mb-8">
       <div className="my-8 flex justify-center">
         <SectionTitle
           title="You Might Like"

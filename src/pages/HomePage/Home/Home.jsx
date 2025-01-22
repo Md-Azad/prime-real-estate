@@ -1,6 +1,7 @@
 import Banner from "./Banner";
 import Advertisement from "./Advertisement";
 import { Helmet } from "react-helmet-async";
+import Reviews from "./Reviews";
 
 const Home = () => {
   // editable.shift();
@@ -14,6 +15,7 @@ const Home = () => {
       </Helmet>
       <Banner></Banner>
       <Advertisement></Advertisement>
+      <Reviews></Reviews>
     </>
   );
 };
