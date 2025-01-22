@@ -3,29 +3,28 @@
 import PropertyCard from "./PropertyCard";
 import useProperty from "../../../hooks/useProperty";
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AllProperties = () => {
-  const [properties] = useProperty();
+  const [properties, isPending] = useProperty();
   const [search, setSearch] = useState("");
+  const [finalproperties, setFinalProperties] = useState([]);
 
-  const allproperties = properties.filter((property) => {
-    return search === ""
-      ? property
-      : property?.location.toLowerCase().includes(search);
-  });
-
-  const [finalproperties, setFinalProperties] = useState(properties);
+  useEffect(() => {
+    if (properties.length > 0) {
+      setFinalProperties(properties);
+    }
+  }, [properties]);
 
   const handleMinSort = () => {
-    console.log("sorted");
-    const sortedPrice = allproperties.sort((a, b) => a.min - b.min);
+    const sortedPrice = [...finalproperties].sort((a, b) => a.min - b.min);
     setFinalProperties(sortedPrice);
     console.log(finalproperties);
   };
 
-  console.log(finalproperties);
-
+  if (isPending) {
+    return <h1>Loading.....</h1>;
+  }
   return (
     <div>
       <div className="flex flex-row-reverse justify-evenly items-center">
@@ -52,10 +51,6 @@ const AllProperties = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* {finalproperties.map((property) => (
-          <PropertyCard key={property._id} property={property}></PropertyCard>
-        ))} */}
-
         {finalproperties
           .filter((items) => {
             return search === ""
