@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signInUser } = useAuth();
@@ -30,8 +31,7 @@ const Login = () => {
           <h1 className="text-5xl font-bold">Login now!</h1>
           <div className="text-center">
             <div className="divider divider-success">With</div>
-
-            <h1>Google</h1>
+            <SocialLogin></SocialLogin>
           </div>
           <div className="divider divider-success">OR</div>
         </div>

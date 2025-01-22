@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const { createUser, updateUser } = useAuth();
@@ -120,7 +121,7 @@ const SignUp = () => {
           <div className="text-center">
             <div className="divider divider-success">OR</div>
 
-            <h1>Google</h1>
+            <SocialLogin></SocialLogin>
           </div>
           <div className="divider "></div>
           <p
