@@ -19,7 +19,10 @@ const AllProperties = () => {
   const handleMinSort = () => {
     const sortedPrice = [...finalproperties].sort((a, b) => a.min - b.min);
     setFinalProperties(sortedPrice);
-    console.log(finalproperties);
+  };
+  const handleMaxSort = () => {
+    const sortedPrice = [...finalproperties].sort((a, b) => b.max - a.max);
+    setFinalProperties(sortedPrice);
   };
 
   if (isPending) {
@@ -45,7 +48,7 @@ const AllProperties = () => {
           <button onClick={handleMinSort} className="btn btn-info text-white">
             Sort By Min Price
           </button>
-          <button className="btn btn-accent text-white">
+          <button onClick={handleMaxSort} className="btn btn-accent text-white">
             Sort By Max Price
           </button>
         </div>
