@@ -25,23 +25,24 @@ const Reviews = () => {
         subTitle="What our clients say about us."
       ></SectionTitle>
 
-      <div className="my-24">
+      <div className="mb-24 mt-8">
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           {latest.map((review) => (
             <SwiperSlide key={review._id}>
-              <div className=" flex flex-col items-center mx-20 bg-purple-400 py-4">
+              <div className=" flex flex-col items-center mx-20 bg-purple-300 py-4">
                 <img
                   className="w-16 h-16 rounded-full"
                   src={review?.reviewDetails[0]?.image}
                   alt=""
                 />
-                <p>{review?.reviewDetails[0]?.name}</p>
+                <p>Name:{review?.reviewDetails[0]?.name}</p>
                 <p>
+                  Property Name:
                   {review?.propertyTitle
                     ? review?.propertyTitle
                     : "Not Available"}
                 </p>
-                <h3 className="text-2xl text-white">{review.review}</h3>
+                <h3 className="text-2xl text-white"> {review.review}</h3>
               </div>
             </SwiperSlide>
           ))}
