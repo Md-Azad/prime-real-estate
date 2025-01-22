@@ -3,6 +3,7 @@ import Advertisement from "./Advertisement";
 import { Helmet } from "react-helmet-async";
 import Reviews from "./Reviews";
 import LatestProject from "./LatestProject";
+import Collaboration from "./Collaboration";
 
 const Home = () => {
   // editable.shift();
@@ -17,6 +18,7 @@ const Home = () => {
       <Banner></Banner>
       <Advertisement></Advertisement>
       <LatestProject></LatestProject>
+      <Collaboration></Collaboration>
       <Reviews></Reviews>
     </>
   );
