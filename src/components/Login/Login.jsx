@@ -1,14 +1,17 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { useState } from "react";
 
 const Login = () => {
   const { signInUser } = useAuth();
+  const [loginError, setLoginError] = useState("");
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
   const navigate = useNavigate();
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
+    setLoginError("");
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -21,7 +24,7 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        alert("an error occured", err.message);
+        setLoginError(err.message);
       });
   };
   return (
@@ -60,6 +63,7 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
+              {loginError && <h1 className="text-red-700">{loginError}</h1>}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
