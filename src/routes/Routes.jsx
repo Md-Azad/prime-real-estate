@@ -25,11 +25,13 @@ import PropertyDetails from "../pages/HomePage/PropertyDetails/PropertyDetails";
 import AgentRoute from "./AgentRoute";
 import MakeOffer from "../pages/DashboardPages/UserPages/MakeOffer/MakeOffer";
 import Payment from "../pages/DashboardPages/UserPages/Payment/Payment";
+import Error from "../components/Error/Error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -68,6 +70,7 @@ export const router = createBrowserRouter([
         <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/dashboard/home",
