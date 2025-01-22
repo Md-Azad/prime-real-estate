@@ -4,7 +4,11 @@ import useAxiosSecure from "./useAxiosSecure";
 const useReview = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: reviews = [], refetch } = useQuery({
+  const {
+    data: reviews = [],
+    refetch,
+    isPending,
+  } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
       const res = await axiosSecure.get("/reviews");
@@ -12,7 +16,7 @@ const useReview = () => {
       return res.data;
     },
   });
-  return [reviews, refetch];
+  return [reviews, refetch, isPending];
 };
 
 export default useReview;

@@ -4,7 +4,7 @@ import useReview from "../../../../hooks/useReview";
 
 const ManageReviews = () => {
   const axiosSecure = useAxiosSecure();
-  const [reviews, refetch] = useReview();
+  const [reviews, refetch, isPending] = useReview();
 
   const handleReviewDelete = (id) => {
     axiosSecure
@@ -19,6 +19,10 @@ const ManageReviews = () => {
         console.log(err.message);
       });
   };
+
+  if (isPending) {
+    return <h1>Loading....</h1>;
+  }
 
   return (
     <div>

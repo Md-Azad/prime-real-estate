@@ -17,11 +17,10 @@ const DetailsCard = ({ property }) => {
     queryKey: ["myreviews", property._id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/reviews/${property._id}`);
-      console.log(res.data);
+
       return res.data;
     },
   });
-  console.log(property);
 
   const handleAddReview = (property) => {
     if (userInfo !== "user") {
