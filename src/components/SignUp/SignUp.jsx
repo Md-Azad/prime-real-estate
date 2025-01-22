@@ -3,12 +3,15 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { useState } from "react";
 
 const SignUp = () => {
   const { createUser, updateUser } = useAuth();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
+  const [passError, setPassError] = useState("");
   const handleSignUp = (e) => {
+    setPassError("");
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -16,6 +19,26 @@ const SignUp = () => {
     const email = form.email.value;
 
     const password = form.password.value;
+    const isCapital = /[A-Z]/;
+    const hasSpecialCharacter = /[!@#$%^&*]/;
+    const isLong = /.{6,}/;
+    const checkCapital = isCapital.test(password);
+    const checkSpecial = hasSpecialCharacter.test(password);
+    const checkLong = isLong.test(password);
+
+    if (!checkSpecial) {
+      setPassError("password must contain a special letter");
+      return;
+    }
+    if (!checkCapital) {
+      setPassError("password must contain a capital letter");
+      return;
+    }
+    if (!checkLong) {
+      setPassError("password must contain at least 6 letters");
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -24,7 +47,7 @@ const SignUp = () => {
           updateUser(name, photo)
             .then(() => {})
             .catch((err) => {
-              console.log(err.message);
+              setPassError(err.message);
             });
         }
         if (user?.email) {
@@ -50,9 +73,10 @@ const SignUp = () => {
         }
       })
       .catch((err) => {
-        console.log(err.message);
+        setPassError(err.message);
       });
   };
+
   return (
     <div className="hero bg-base-200 min-h-screen ">
       <div className="hero-content flex-col w-3/5  ">
@@ -109,6 +133,7 @@ const SignUp = () => {
                 required
               />
             </div>
+            <p className="text-red-700">{passError}</p>
 
             <div className="form-control mt-6">
               <input
