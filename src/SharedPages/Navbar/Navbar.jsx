@@ -67,12 +67,20 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user?.email ? (
-          <button
-            onClick={handleLogout}
-            className="btn bg-purple-700 hover:bg-purple-500 text-white"
-          >
-            Logout
-          </button>
+          <div className="flex items-center gap-4">
+            <img
+              className="w-12 h-12 rounded-full"
+              src={user?.photoURL}
+              alt=""
+            />
+            <p>{user?.displayName || "N/A"}</p>
+            <button
+              onClick={handleLogout}
+              className="btn bg-purple-700 hover:bg-purple-500 text-white"
+            >
+              Logout
+            </button>
+          </div>
         ) : (
           <Link to="/login">
             <button className="btn bg-yellow-600 text-white">Login</button>
