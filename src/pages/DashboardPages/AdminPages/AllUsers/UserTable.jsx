@@ -107,7 +107,16 @@ const UserTable = ({ user, refetch }) => {
         axiosSecure
           .delete(`/delete-user/${res.data.uid}`)
           .then((res) => {
-            console.log(res.data.remove.deletedCount);
+            if (res.data?.remove?.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User has been deleted",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
           })
           .catch((err) => {
             console.log(err.message);

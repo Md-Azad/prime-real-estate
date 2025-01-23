@@ -30,6 +30,9 @@ const SoldProperties = () => {
           Total Revenue: ${revenue}
         </h1>
       </div>
+      <h1 className="text-green-700 text-center py-4 text-2xl underline font-bold">
+        My sold Properties
+      </h1>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
