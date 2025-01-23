@@ -1,11 +1,13 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const CheckoutForm = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
@@ -22,12 +24,16 @@ const CheckoutForm = () => {
   });
 
   useEffect(() => {
-    axiosSecure
-      .post("/creare-payment-intent", { price: prices.offerPrice })
-      .then((res) => {
-        setClientSecret(res.data.clientsecret);
-      });
-  }, [axiosSecure, prices.offerPrice]);
+    if (prices?.offerPrice) {
+      axiosSecure
+        .post("/creare-payment-intent", {
+          price: prices?.offerPrice,
+        })
+        .then((res) => {
+          setClientSecret(res.data?.clientsecret);
+        });
+    }
+  }, [axiosSecure, prices, prices?.offerPrice]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -70,7 +76,16 @@ const CheckoutForm = () => {
         axiosSecure
           .patch(`/savepayment/${id}`, { paymentId: paymentIntent.id })
           .then((res) => {
-            console.log("payment successfull", res.data);
+            if (res.data.modifiedCount > 0) {
+              navigate("/dashboard/boughtproperty");
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Payment has been received.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
           });
       }
     }

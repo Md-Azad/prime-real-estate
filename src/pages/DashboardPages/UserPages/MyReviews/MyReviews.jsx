@@ -35,7 +35,7 @@ const MyReviews = () => {
         console.log(err.message);
       });
   };
-  console.log(myreviews);
+
   return (
     <div>
       <h1>My Reviews: {myreviews.length}</h1>

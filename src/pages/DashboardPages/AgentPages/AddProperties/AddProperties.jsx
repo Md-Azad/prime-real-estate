@@ -10,7 +10,7 @@ const AddProperties = () => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const apiKey = import.meta.env.VITE_Imagebb_api;
 
@@ -42,6 +42,7 @@ const AddProperties = () => {
         .post("/products", product)
         .then((res) => {
           if (res.data.insertedId) {
+            reset();
             Swal.fire({
               position: "top-end",
               icon: "success",

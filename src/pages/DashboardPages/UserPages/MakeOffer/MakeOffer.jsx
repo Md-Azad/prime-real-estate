@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 
 const MakeOffer = () => {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const id = useParams();
   const axiosSecure = useAxiosSecure();
@@ -19,7 +20,6 @@ const MakeOffer = () => {
       return res.data;
     },
   });
-  console.log(product);
 
   const onSubmit = async (data) => {
     const min = parseFloat(product.min);
@@ -49,7 +49,16 @@ const MakeOffer = () => {
     axiosSecure
       .patch(`/wishlist/${user?.email}`, offerData)
       .then((res) => {
-        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          navigate("/dashboard/boughtproperty");
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Added to the wishlist.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       })
       .catch((err) => {
         console.log(err.message);
