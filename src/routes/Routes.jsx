@@ -26,6 +26,7 @@ import AgentRoute from "./AgentRoute";
 import MakeOffer from "../pages/DashboardPages/UserPages/MakeOffer/MakeOffer";
 import Payment from "../pages/DashboardPages/UserPages/Payment/Payment";
 import Error from "../components/Error/Error";
+import Advertise from "../pages/DashboardPages/AdminPages/Advertise/Advertise";
 
 export const router = createBrowserRouter([
   {
@@ -99,6 +100,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageReviews></ManageReviews>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/advertise",
+        element: (
+          <AdminRoute>
+            <Advertise></Advertise>
           </AdminRoute>
         ),
       },

@@ -45,7 +45,7 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink
                     to="/dashboard/manageproperties"
-                    className="flex items-center gap-2 text-2xl"
+                    className="flex items-center text-2xl"
                   >
                     Manage Properties
                   </NavLink>
@@ -56,6 +56,14 @@ const DashboardLayout = () => {
                     className="flex items-center gap-2 text-2xl"
                   >
                     Manage Reviews
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/advertise"
+                    className="flex items-center gap-2 text-2xl"
+                  >
+                    Advertise Property
                   </NavLink>
                 </li>
               </>
@@ -152,8 +160,8 @@ const DashboardLayout = () => {
         <div className="flex-1 p-8">
           {role === "fraud" && (
             <h1 className="text-red-600 text-3xl text-center">
-              You marked as a fraud. If you have an inquery please write us on :
-              primerealestate@gmail.com
+              You marked as a fraud. If you have any inquery please write us on
+              : primerealestate@gmail.com
             </h1>
           )}
           {role !== "fraud" && <Outlet></Outlet>}

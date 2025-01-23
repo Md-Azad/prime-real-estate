@@ -14,8 +14,10 @@ import { app } from "../firebase/firebase.config";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
+
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
+  const [add, setAdd] = useState(null);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
@@ -62,6 +64,8 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUser,
     deleteUser,
+    add,
+    setAdd,
   };
 
   useEffect(() => {
