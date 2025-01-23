@@ -5,6 +5,7 @@ import MyProfile from "../UserPages/MyProfile/MyProfile";
 
 const DashboardHome = () => {
   const [role] = useRole();
+  console.log("before edit profile", role);
   return (
     <>
       {role === "admin" && <AdminHome></AdminHome>}
