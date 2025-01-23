@@ -1,8 +1,10 @@
+import HomeComponent from "../../../../components/HomeComponent";
+
 const AgentHome = () => {
   return (
-    <div>
-      <h1>Agent Home</h1>
-    </div>
+    <>
+      <HomeComponent></HomeComponent>
+    </>
   );
 };
 

@@ -1,8 +1,10 @@
+import HomeComponent from "../../../../components/HomeComponent";
+
 const MyProfile = () => {
   return (
-    <div>
-      <h1>User Profile</h1>
-    </div>
+    <>
+      <HomeComponent></HomeComponent>
+    </>
   );
 };
 

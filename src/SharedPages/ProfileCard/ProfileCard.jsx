@@ -30,7 +30,7 @@ const ProfileCard = ({ profile, setLoading }) => {
             .then((res) => {
               if (res.data.modifiedCount > 0) {
                 setLoading(false);
-                console.log("role after update profile--------", role);
+
                 Swal.fire({
                   position: "top-end",
                   icon: "success",
