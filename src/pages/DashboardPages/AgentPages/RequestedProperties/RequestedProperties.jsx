@@ -16,6 +16,7 @@ const RequestedProperties = () => {
       return res.data;
     },
   });
+  console.log(requestedList);
 
   const handleAcceptOffer = (list) => {
     const data = {
@@ -86,20 +87,47 @@ const RequestedProperties = () => {
                     <td>{list?.buyerEmail}</td>
                     <td className="text-center">${list?.offerPrice}</td>
                     <td>
-                      <button
-                        onClick={() => handleAcceptOffer(list)}
-                        className="btn btn-success text-white"
-                      >
-                        Accept
-                      </button>
+                      {list?.status === "pending" ? (
+                        <button
+                          onClick={() => handleAcceptOffer(list)}
+                          className="btn btn-success text-white"
+                          disabled={list?.status === "accepted"}
+                        >
+                          Accept
+                        </button>
+                      ) : (
+                        <h1
+                          className={`${
+                            list?.status === "accepted"
+                              ? "bg-green-700"
+                              : "bg-red-700"
+                          } text-white text-center rounded-lg`}
+                        >
+                          {list?.status}
+                        </h1>
+                      )}
                     </td>
-                    <td
-                      onClick={() => {
-                        handleReject(list._id);
-                      }}
-                      className=" btn btn-error"
-                    >
-                      <ImCross className="text-white text-2xl"></ImCross>
+                    <td>
+                      {list?.status === "pending" ? (
+                        <button
+                          onClick={() => {
+                            handleReject(list._id);
+                          }}
+                          className=" btn btn-error"
+                        >
+                          <ImCross className="text-white text-xl"></ImCross>
+                        </button>
+                      ) : (
+                        <h1
+                          className={`${
+                            list?.status === "accepted"
+                              ? "bg-green-700"
+                              : "bg-red-700"
+                          } text-white text-center rounded-lg`}
+                        >
+                          {list?.status}
+                        </h1>
+                      )}
                     </td>
                   </tr>
                 ))}
