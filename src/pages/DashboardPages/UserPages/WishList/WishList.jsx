@@ -13,7 +13,6 @@ const WishList = () => {
       return res.data;
     },
   });
-  console.log("mywishlist", wishList);
 
   const handleWishListDelete = (id) => {
     axiosSecure

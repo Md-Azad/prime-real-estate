@@ -3,6 +3,7 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 import { ImCross } from "react-icons/im";
+import Swal from "sweetalert2";
 
 const RequestedProperties = () => {
   const { user } = useAuth();
@@ -15,7 +16,7 @@ const RequestedProperties = () => {
       return res.data;
     },
   });
-  console.log(requestedList);
+
   const handleAcceptOffer = (list) => {
     const data = {
       agentEmail: list?.agentEmail,
@@ -31,6 +32,30 @@ const RequestedProperties = () => {
       .catch((err) => {
         console.log(err.message);
       });
+  };
+
+  const handleReject = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to reject this offer!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/offerreject/${id}`).then((res) => {
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Rejected!",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
   };
   return (
     <div>
@@ -68,7 +93,12 @@ const RequestedProperties = () => {
                         Accept
                       </button>
                     </td>
-                    <td className=" btn btn-error">
+                    <td
+                      onClick={() => {
+                        handleReject(list._id);
+                      }}
+                      className=" btn btn-error"
+                    >
                       <ImCross className="text-white text-2xl"></ImCross>
                     </td>
                   </tr>
