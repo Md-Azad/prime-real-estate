@@ -11,7 +11,7 @@ const Advertisement = () => {
 
   const addProperties = [...properties];
   const editable = addProperties.slice(0, 4);
-  //   const test = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
   const [show, setShow] = useState(editable);
 
   useEffect(() => {
