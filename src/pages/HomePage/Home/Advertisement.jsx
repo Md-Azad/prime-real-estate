@@ -7,15 +7,21 @@ import Swal from "sweetalert2";
 
 const Advertisement = () => {
   const [properties] = useProperty();
+
   const { add } = useAuth();
 
-  const addProperties = [...properties];
-  const editable = addProperties.slice(0, 4);
-
-  const [show, setShow] = useState(editable);
+  const [show, setShow] = useState([]);
 
   useEffect(() => {
-    const isExist = editable.find((edit) => edit._id === add);
+    if (properties.length > 0) {
+      const addProperties = [...properties];
+      const editable = addProperties.slice(0, 4);
+      setShow(editable);
+    }
+  }, [properties]);
+
+  useEffect(() => {
+    const isExist = show.find((edit) => edit._id === add);
     if (isExist) {
       Swal.fire({
         icon: "error",
