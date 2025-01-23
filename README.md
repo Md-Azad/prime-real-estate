@@ -1,8 +1,30 @@
 # Prime Real Estate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Admin User Name: rizwan@gmail.com
+- Admin password: Rizwan!
+- Live Link: https://prime-real-estate-38ded.firebaseapp.com/
 
-Currently, two official plugins are available:
+## Some Features of this website.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### user
+
+    -User can make account
+    -User can make review
+    -User can add properties in wishlist
+    -User can make offer to buy a property
+    - user can make payment.
+
+### Agent
+
+    -Agent can add products
+    -Agent can Edit product
+    -Agent can Accept or reject property buy request.
+    -Agent can delete products.
+
+### Admin
+
+    -Admin can make a user agent or admin
+    -admin an mark a user as a fraud
+    -admin can delete a user.
+    -admin can advertise a property in home page.
+    -admin can reject a property.
