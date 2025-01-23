@@ -104,23 +104,35 @@ const UserTable = ({ user, refetch }) => {
   const handleDeleteUser = (email) => {
     axiosSecure.get(`/singleuser/${email}`).then((res) => {
       if (res.data.uid) {
-        axiosSecure
-          .delete(`/delete-user/${res.data.uid}`)
-          .then((res) => {
-            if (res.data?.remove?.deletedCount > 0) {
-              refetch();
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "User has been deleted",
-                showConfirmButton: false,
-                timer: 1500,
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You want to delete the user?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            axiosSecure
+              .delete(`/delete-user/${res.data.uid}`)
+              .then((res) => {
+                if (res.data?.remove?.deletedCount > 0) {
+                  refetch();
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User has been deleted",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                }
+              })
+              .catch((err) => {
+                console.log(err.message);
               });
-            }
-          })
-          .catch((err) => {
-            console.log(err.message);
-          });
+          }
+        });
       }
     });
   };
