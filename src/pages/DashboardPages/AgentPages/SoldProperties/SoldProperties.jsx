@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
 
 const SoldProperties = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const [revenue, setRevenue] = useState(0);
   const { data: soldProperties = [] } = useQuery({
     queryKey: ["sold", user?.email],
     queryFn: async () => {
@@ -12,8 +14,22 @@ const SoldProperties = () => {
       return res.data;
     },
   });
+
+  const p = soldProperties.reduce(
+    (total, acc) => total + parseInt(acc.soldPrice),
+    0
+  );
+  useEffect(() => {
+    setRevenue(p);
+  }, [soldProperties]);
+
   return (
     <div>
+      <div>
+        <h1 className="bg-purple-700 w-1/3 rounded-md py-8 pl-8 text-xl font-bold text-white">
+          Total Revenue: ${revenue}
+        </h1>
+      </div>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}

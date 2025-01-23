@@ -13,7 +13,7 @@ const BoughtProperty = () => {
       return res.data;
     },
   });
-  console.log(myProperty);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
       {myProperty.map((pro) => (
@@ -35,14 +35,13 @@ const BoughtProperty = () => {
                 {pro?.offerPrice}
               </p>
               <p>
-                Status:{" "}
-                <span className="text-purple-700">
-                  {pro.status && "Bought"}
-                </span>
+                Status: <span className="text-purple-700">{pro.status}</span>
               </p>
-              <p className="text-green-700 text-sm">
-                PaymentId: {pro.paymentId}
-              </p>
+              {pro?.paymentId && (
+                <p className="text-green-700 text-sm">
+                  PaymentId: {pro.paymentId}
+                </p>
+              )}
             </div>
             {pro?.status === "accepted" && (
               <Link to={`/dashboard/payment/${pro._id}`}>
