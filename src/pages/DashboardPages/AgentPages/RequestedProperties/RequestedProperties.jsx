@@ -16,7 +16,6 @@ const RequestedProperties = () => {
       return res.data;
     },
   });
-  console.log(requestedList);
 
   const handleAcceptOffer = (list) => {
     const data = {
