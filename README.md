@@ -125,9 +125,6 @@ VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
 VITE_FIREBASE_APP_ID=your_firebase_app_id
 
 Server (.env):
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET
-STRIPE_SECRET_KEY
 
 DB_USER=yourDatabase_name
 DB_PASS=your_database_accessPassword
