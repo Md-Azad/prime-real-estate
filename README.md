@@ -130,39 +130,63 @@ PAYMENT_SECTET_KEY=your_stripe_key
 
 🎮 Usage
 🔹 User
-Browse properties and view details
-Wishlist and make offers on properties
-Purchase properties via secure checkout
-Leave reviews for properties
+- Browse properties and view details
+- Wishlist and make offers on properties
+- Purchase properties via secure checkout
+- Leave reviews for properties
 🔹 Agent
-Add, update, and manage properties
-Track sold properties and pending offers
+- Add, update, and manage properties
+- Track sold properties and pending offers
 🔹 Admin
-Approve, reject, and manage all property listings
-Manage users (promote to agent/admin, mark as fraud)
-Moderate user reviews
+- Approve, reject, and manage all property listings
+- Manage users (promote to agent/admin, mark as fraud)
+- Moderate user reviews
 
 📊 Dashboard Functionalities
 
 🏠 User Dashboard
-My Profile: View personal details
-Wishlist: View and manage wishlisted properties
-Purchased Properties: View owned properties and payment details
-My Reviews: Manage submitted reviews
+- My Profile: View personal details
+- Wishlist: View and manage wishlisted properties
+- Purchased Properties: View owned properties and payment details
+- My Reviews: Manage submitted reviews
 
 🏗️ Agent Dashboard
-Profile: View agent details
-Add Property: List new properties for sale
-My Properties: Manage active listings
-Sold Properties: Track successfully sold properties
-Requested Offers: Accept or reject buyer offers
+- Profile: View agent details
+- Add Property: List new properties for sale
+- My Properties: Manage active listings
+- Sold Properties: Track successfully sold properties
+- Requested Offers: Accept or reject buyer offers
 
 🔧 Admin Dashboard
-Manage Properties: Verify or reject properties
-Manage Users: Promote users, mark fraud, or remove accounts
-Manage Reviews: Moderate and delete reviews
+- Manage Properties: Verify or reject properties
+- Manage Users: Promote users, mark fraud, or remove accounts
+- Manage Reviews: Moderate and delete reviews
 
 🔑 Authentication
-Email/password-based authentication (Firebase)
-Social login option (Google)
-Session persistence after page reload
+- Email/password-based authentication (Firebase)
+- Social login option (Google)
+- Session persistence after page reload
+
+ ## 📦 Dependencies  
+This project uses the following dependencies:  
+
+- `@react-icons/all-files`  
+- `@stripe/react-stripe-js`  
+- `@stripe/stripe-js`  
+- `@tanstack/react-query`  
+- `@types/react-helmet`  
+- `axios`  
+- `firebase`  
+- `localforage`  
+- `match-sorter`  
+- `moment`  
+- `react`  
+- `react-dom`  
+- `react-helmet-async`  
+- `react-hook-form`  
+- `react-icons`  
+- `react-router-dom`  
+- `sort-by`  
+- `sweetalert2`  
+- `swiper`  
+
