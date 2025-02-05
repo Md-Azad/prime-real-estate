@@ -1,10 +1,4 @@
-# Prime Real Estate
-
-- Admin User Name: rizwan@gmail.com
-- Admin password: Rizwan!
-- Live Link: https://prime-real-estate-38ded.firebaseapp.com/
-
-# 🏡 Real Estate Platform
+# 🏡 Prime Real Estate Platform
 
 ## 📌 Introduction
 
