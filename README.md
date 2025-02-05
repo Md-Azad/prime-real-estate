@@ -30,7 +30,6 @@ With features like property verification, wishlist management, secure authentica
 - [Dashboard Functionalities](#-dashboard-functionalities)
 - [Authentication](#-authentication)
 - [API Endpoints](#-api-endpoints)
-- [License](#-license)
 
 ---
 
