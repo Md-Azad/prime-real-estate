@@ -29,7 +29,6 @@ With features like property verification, wishlist management, secure authentica
 - [User Roles](#-user-roles)
 - [Dashboard Functionalities](#-dashboard-functionalities)
 - [Authentication](#-authentication)
-- [API Endpoints](#-api-endpoints)
 
 ---
 
