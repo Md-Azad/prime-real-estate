@@ -127,8 +127,11 @@ VITE_FIREBASE_APP_ID=your_firebase_app_id
 Server (.env):
 
 DB_USER=yourDatabase_name
+
 DB_PASS=your_database_accessPassword
+
 ACCESS_TOKEN=your_secret_key
+
 PAYMENT_SECTET_KEY=your_stripe_key
 
 🎮 Usage
