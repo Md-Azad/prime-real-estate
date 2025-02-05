@@ -4,27 +4,82 @@
 - Admin password: Rizwan!
 - Live Link: https://prime-real-estate-38ded.firebaseapp.com/
 
-## Some Features of this website.
+# 🏡 Real Estate Platform
 
-### user
+## 📌 Introduction
 
-    -User can make account
-    -User can make review
-    -User can add properties in wishlist
-    -User can make offer to buy a property
-    - user can make payment.
+The **Real Estate Platform** is a modern web application built with the **MERN stack** that allows users to buy, sell, and manage real estate properties. The platform supports three roles:
 
-### Agent
+- **User**: Can browse, wishlist, review, and purchase properties.
+- **Agent**: Can add, update, and manage their listed properties.
+- **Admin**: Has full control over property listings, users, and reviews.
 
-    -Agent can add products
-    -Agent can Edit product
-    -Agent can Accept or reject property buy request.
-    -Agent can delete products.
+With features like property verification, wishlist management, secure authentication, and real-time updates, this platform provides a seamless experience for both buyers and sellers.
 
-### Admin
+---
 
-    -Admin can make a user agent or admin
-    -admin an mark a user as a fraud
-    -admin can delete a user.
-    -admin can advertise a property in home page.
-    -admin can reject a property.
+## 📜 Table of Contents
+
+- [Live Demo](#-live-demo)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
+- [Environment Variables](#-environment-variables)
+- [Usage](#-usage)
+- [User Roles](#-user-roles)
+- [Dashboard Functionalities](#-dashboard-functionalities)
+- [Authentication](#-authentication)
+- [API Endpoints](#-api-endpoints)
+- [License](#-license)
+
+---
+
+## 🚀 Live Demo
+
+🔗 **[Live Website URL](#)** ( https://prime-real-estate-38ded.firebaseapp.com/)
+
+### 🔑 Admin Credentials
+
+- **Username:** `rizwan@gmail.com`
+- **Password:** `Rizwan!`
+
+---
+
+## 🌟 Features
+
+✅ Fully responsive design for **mobile, tablet, and desktop**  
+✅ Secure **email/password authentication** with Firebase  
+✅ **Real-time property listings** with image uploads  
+✅ Users can **wishlist** properties and make offers  
+✅ **Agents can add and manage** their listed properties  
+✅ **Admins can verify, reject, and manage** properties  
+✅ **Reviews system** for properties  
+✅ **Payment integration** for property purchases  
+✅ **Toast notifications** for CRUD operations  
+✅ **Protected routes** with session persistence  
+✅ **Role-based dashboards** for users, agents, and admins
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js, Tailwind CSS, TanStack Query
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** Firebase
+- **Payment Gateway:** Stripe
+- **State Management:** TanStack Query
+
+---
+
+## ⚙️ Installation
+
+To set up the project locally, follow these steps:
+
+1️⃣ **Clone the repository:**
+
+```bash
+git clone https://github.com/your-repo/real-estate-platform.git
+cd real-estate-platform
+
+```
