@@ -17,7 +17,7 @@ const PropertyDetails = () => {
   });
 
   return (
-    <div>
+    <div className="md:px-12">
       <DetailsCard property={property}></DetailsCard>
     </div>
   );

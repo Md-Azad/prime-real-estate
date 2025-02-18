@@ -109,8 +109,8 @@ const DetailsCard = ({ property }) => {
       });
   };
   return (
-    <div className=" bg-gray-200 min-h-screen rounded-md   ">
-      <div className=" flex-col  items-center justify-center   ">
+    <div className="  min-h-screen rounded-md   ">
+      <div className=" flex-col bg-gray-200  items-center justify-center   ">
         <div className=" h-64 md:h-[24rem] w-full ">
           <img
             src={property?.image}
@@ -126,7 +126,9 @@ const DetailsCard = ({ property }) => {
           </h1>
           <p className="text-xl">Agent Name: {property?.name}</p>
           <p className=" text-xl">Location:{property?.location}</p>
-          <p className="text-xl ">Description: {property?.description}</p>
+          <p className="text-xl text-left pl-4">
+            Description: {property?.description}
+          </p>
 
           <p className="text-xl">
             Price Range: ${property?.max} - ${property?.min}
@@ -145,26 +147,8 @@ const DetailsCard = ({ property }) => {
               Add a Review
             </button>
           </div>
-          <div className="bg-purple-200 pt-4 border-2  border-yellow-300">
-            {myreviews.length < 1 && (
-              <h1 className="text-2xl text-center">
-                This Property yet to receive a review.
-              </h1>
-            )}
-            {myreviews.length > 0 && (
-              <h1 className="text-xl font-bold">
-                What People say About this Property.
-              </h1>
-            )}
-            {myreviews.map((review, index) => (
-              <div key={review._id}>
-                <h1>
-                  {index + 1}--{review.review}
-                </h1>
-              </div>
-            ))}
-          </div>
 
+          {/* modal */}
           <dialog id="my_modal_3" className="modal">
             <div className="modal-box">
               <form method="dialog">
@@ -192,6 +176,25 @@ const DetailsCard = ({ property }) => {
             </div>
           </dialog>
         </div>
+      </div>
+      <div className="bg-white  pt-4 my-4  ">
+        {myreviews.length < 1 && (
+          <h1 className="text-2xl text-center">
+            This Property yet to receive a review.
+          </h1>
+        )}
+        {myreviews.length > 0 && (
+          <h1 className="text-xl font-bold text-center">
+            What People say About this Property.
+          </h1>
+        )}
+        {myreviews.map((review, index) => (
+          <div key={review._id} className="flex justify-center items-center">
+            <h1>
+              {index + 1}.{review.review}
+            </h1>
+          </div>
+        ))}
       </div>
     </div>
   );

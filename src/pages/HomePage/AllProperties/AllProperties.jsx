@@ -29,7 +29,7 @@ const AllProperties = () => {
     return <h1>Loading.....</h1>;
   }
   return (
-    <div>
+    <div className="md:px-12 mb-8">
       <div className="flex flex-row-reverse justify-evenly items-center">
         <div className="my-4 flex justify-center mr-12 items-center">
           <label className="input input-bordered border-yellow-500 flex items-center gap-2">

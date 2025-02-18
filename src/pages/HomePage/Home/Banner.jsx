@@ -21,7 +21,9 @@ const Banner = () => {
               unmatched opportunities, and a commitment to your future
             </p>
             <Link to="/allProperties">
-              <button className="btn btn-primary">Visit Your Next Home</button>
+              <button className="btn btn-info text-white">
+                Visit Your Next Home
+              </button>
             </Link>
           </div>
         </div>

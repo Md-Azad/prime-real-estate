@@ -15,13 +15,16 @@ const SoldProperties = () => {
     },
   });
 
+  console.log(soldProperties);
   const p = soldProperties.reduce(
-    (total, acc) => total + parseInt(acc.soldPrice),
+    (total, acc) => total + parseInt(acc?.soldPrice ? acc.soldPrice : 0),
     0
   );
   useEffect(() => {
     setRevenue(p);
   }, [soldProperties]);
+
+  console.log(p);
 
   return (
     <div>
@@ -35,7 +38,6 @@ const SoldProperties = () => {
       </h1>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
-          {/* head */}
           <thead>
             <tr>
               <th>#</th>

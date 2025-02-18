@@ -18,7 +18,6 @@ const PropertyCard = ({ property }) => {
             <span>{property?.status === "accepted" && "Verified"}</span>
           </p>
           <p className="py-2 text-xl">Location:{property?.location}</p>
-          <p className="text-xl">image: will be available letter</p>
 
           <p className="text-xl">
             Price Range: ${property?.max} - ${property?.min}
