@@ -3,14 +3,14 @@ import bannerImg from "../../../assets/banner.jpg";
 
 const Banner = () => {
   return (
-    <>
+    <div className="md:px-12 ">
       <div
-        className="hero min-h-[30rem]"
+        className="hero md:min-h-[30rem] 2xl:min-h-[47rem] z-10 rounded-lg "
         style={{
           backgroundImage: `url(${bannerImg})`,
         }}
       >
-        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-overlay bg-opacity-60 rounded-lg"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">
@@ -26,7 +26,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

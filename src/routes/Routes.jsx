@@ -27,6 +27,8 @@ import MakeOffer from "../pages/DashboardPages/UserPages/MakeOffer/MakeOffer";
 import Payment from "../pages/DashboardPages/UserPages/Payment/Payment";
 import Error from "../components/Error/Error";
 import Advertise from "../pages/DashboardPages/AdminPages/Advertise/Advertise";
+import About from "../components/About/About";
+import Contact from "../components/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +47,14 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
       },
       {
         path: "/allproperties",
