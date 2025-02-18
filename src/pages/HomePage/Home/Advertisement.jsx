@@ -39,14 +39,14 @@ const Advertisement = () => {
   }, [add]);
 
   return (
-    <div className="mb-8">
+    <div className="mb-8 md:px-12 ">
       <div className="my-8 flex justify-center">
         <SectionTitle
           title="You Might Like"
           subTitle="Most visited properties"
         ></SectionTitle>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
         {show.map((property) => (
           <PropertyCard key={property._id} property={property}></PropertyCard>
         ))}

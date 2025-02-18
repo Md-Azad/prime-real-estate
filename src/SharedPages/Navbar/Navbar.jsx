@@ -12,12 +12,17 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
 
-      <li>
-        <NavLink to="/allProperties">All Properties</NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/home">Dashboard</NavLink>
-      </li>
+      {user?.email && (
+        <>
+          {" "}
+          <li>
+            <NavLink to="/allProperties">All Properties</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/home">Dashboard</NavLink>
+          </li>
+        </>
+      )}
       <li>
         <NavLink to="/contact">Contact</NavLink>
       </li>

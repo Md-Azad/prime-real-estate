@@ -29,15 +29,15 @@ const Reviews = () => {
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           {latest.map((review) => (
             <SwiperSlide key={review._id}>
-              <div className=" flex flex-col items-center mx-20 bg-purple-300 py-4">
+              <div className=" flex flex-col items-center mx-12 bg-gray-400 py-4">
                 <img
                   className="w-16 h-16 rounded-full"
                   src={review?.reviewDetails[0]?.image}
                   alt=""
                 />
-                <p>Name:{review?.reviewDetails[0]?.name}</p>
+                <p>{review?.reviewDetails[0]?.name}</p>
                 <p>
-                  Property Name:
+                  Property:
                   {review?.propertyTitle
                     ? review?.propertyTitle
                     : "Not Available"}

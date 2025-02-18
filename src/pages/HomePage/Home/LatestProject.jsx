@@ -1,9 +1,8 @@
 import house from "../../../assets/banner.jpg";
 import SectionTitle from "../../../SharedPages/Navbar/SectionTitle/SectionTitle";
-const latest = 3;
 const LatestProject = () => {
   return (
-    <div>
+    <div className="md:px-12">
       <SectionTitle
         title="Future Projects"
         subTitle="15% off on Pre-book"
@@ -18,7 +17,7 @@ const LatestProject = () => {
             <h2 className="card-title">Baghbari Royal Mension</h2>
             <p>Call for enquery: +495145826</p>
             <div className="card-actions">
-              <button className="btn btn-success text-white">Pre Book</button>
+              <button className="btn btn-info text-white">Pre Book</button>
             </div>
           </div>
         </div>
@@ -30,7 +29,7 @@ const LatestProject = () => {
             <h2 className="card-title">Hatibanda Fokir Bari</h2>
             <p>Call for enquery: +495145826</p>
             <div className="card-actions">
-              <button className="btn btn-success text-white">Pre Book</button>
+              <button className="btn btn-info text-white">Pre Book</button>
             </div>
           </div>
         </div>
@@ -42,7 +41,7 @@ const LatestProject = () => {
             <h2 className="card-title">Goribana Palace</h2>
             <p>Call for enquery: +495145826</p>
             <div className="card-actions">
-              <button className="btn btn-success text-white">Pre Book</button>
+              <button className="btn btn-info text-white">Pre Book</button>
             </div>
           </div>
         </div>
