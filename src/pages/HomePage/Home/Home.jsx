@@ -5,6 +5,7 @@ import Reviews from "./Reviews";
 import LatestProject from "./LatestProject";
 import Collaboration from "./Collaboration";
 import Offer from "./Offer";
+import Investment from "./Investment";
 
 const Home = () => {
   // editable.shift();
@@ -21,6 +22,7 @@ const Home = () => {
       <LatestProject></LatestProject>
       <Offer></Offer>
       <Collaboration></Collaboration>
+      <Investment></Investment>
       <Reviews></Reviews>
     </>
   );

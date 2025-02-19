@@ -11,8 +11,7 @@ const Offer = () => {
       <div className="divider "></div>
       <div className="flex flex-col items-center justify-center my-8 bg-gray-200 space-y-4 py-8">
         <h1 className="text-purple-600 font-bold text-2xl">
-          No Need to worry about payment. Now You can take time a pay in your
-          convenient time frame.
+          No Need to worry about payment! Choose your own mood.
         </h1>
         <ul className="text-xl font-semibold text-slate-600">
           <li className="flex items-center gap-2">
