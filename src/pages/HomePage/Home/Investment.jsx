@@ -1,5 +1,4 @@
 import SectionTitle from "../../../SharedPages/Navbar/SectionTitle/SectionTitle";
-import { FaHandshake } from "react-icons/fa";
 import investImg from "../../../assets/house.jpg";
 const Investment = () => {
   return (
@@ -11,7 +10,6 @@ const Investment = () => {
 
       <div className=" flex px-4 flex-col md:flex-row gap-8 border  py-8">
         <div className="flex-1 ">
-          {/* <FaHandshake className="text-[20rem] text-purple-700" /> */}
           <img src={investImg} className="w-full h-full rounded-lg" alt="" />
         </div>
         <div className="flex-1 space-y-4">

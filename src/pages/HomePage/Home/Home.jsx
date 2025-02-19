@@ -6,12 +6,9 @@ import LatestProject from "./LatestProject";
 import Collaboration from "./Collaboration";
 import Offer from "./Offer";
 import Investment from "./Investment";
+import Faq from "./Faq";
 
 const Home = () => {
-  // editable.shift();
-  // editable.unshift({ number: 55 });
-
-  // console.log(editable);
   return (
     <>
       <Helmet>
@@ -24,6 +21,7 @@ const Home = () => {
       <Collaboration></Collaboration>
       <Investment></Investment>
       <Reviews></Reviews>
+      <Faq></Faq>
     </>
   );
 };
