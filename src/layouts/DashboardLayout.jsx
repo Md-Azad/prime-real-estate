@@ -6,13 +6,8 @@ const DashboardLayout = () => {
 
   return (
     <div>
-      {/* <h1>Dashboard Layout.{role}</h1>
-      {role === "admin" && <h1>this is Admin home</h1>}
-      {role === "agent" && <h1>this is agent home</h1>}
-      {role === "user" && <h1>this is User home</h1>} */}
-
       <section className="flex">
-        <div className="w-64 min-h-screen bg-orange-300">
+        <div className="w-64 min-h-screen bg-slate-200">
           <div className="text-center">
             <h1 className="text-3xl font-bold">Prime Real Estate</h1>
             <p>Always Provides better Home.</p>

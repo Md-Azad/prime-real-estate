@@ -52,18 +52,21 @@ const ProfileCard = ({ profile, setLoading }) => {
 
   return (
     <div className="flex flex-col md:flex-row justify-center items-center gap-8 mt-12">
-      <div className="card card-compact bg-base-100 w-96 shadow-xl ">
+      <div className="card card-compact flex-row bg-gray-100 w-full shadow-xl ">
         <figure className="h-56">
           <img className="h-full w-full" src={profile?.photoURL} alt="Shoes" />
         </figure>
 
-        <div className="card-body">
-          <h2 className="card-title">{profile?.displayName}</h2>
-          <p className="cart-title">{profile?.email}</p>
-          <div className="card-actions justify-center items-center">
+        <div className="card-body flex-row justify-between ">
+          <div>
+            <h2 className="card-title">{profile?.displayName}</h2>
+            <p className="cart-title">{profile?.email}</p>
+            <p className="uppercase cart-title">{role}</p>
+          </div>
+          <div className="card-actions bottom-0 absolute right-0  mb-2">
             <button
               onClick={() => setUpdate((prevUpdate) => !prevUpdate)}
-              className="btn btn-primary"
+              className="btn btn-info text-white mr-2"
             >
               Update Profile
             </button>
